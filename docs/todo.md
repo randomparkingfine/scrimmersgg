@@ -1,18 +1,8 @@
-# Licensing
-
-If this is to ever get published this will have to be fixed
-
-# Links
-
-Pages don't have proper links since everything is temporary/being built
-
-# On-going things
-
-> Imaging
-
-Right now the pages look like treash without proper imaging
-
 # [1] Static setup
+
+Not going to connect _everything_ just yet but soon^tm
+
+> [-1] Sign up page
 
 > [0] Game regional pages
 
@@ -29,3 +19,18 @@ User accounts:
 Team registration
 
 > Again cfg things 
+
+# Licensing
+
+If this is to ever get published this will have to be fixed
+
+# Links
+
+Pages don't have proper links since everything is temporary/being built
+
+# On-going things
+
+> Imaging
+
+Right now the pages look like treash without proper imaging
+
