@@ -24,7 +24,7 @@
             <!-- Main -->
             <div id="main">
                 <!-- Form elements -->
-                <form method="post" action="#">
+                <form id="main-form" method="post" action="#">
                     <div class="fields">
                         <div class="field">
                             <label for="name">Username</label>
@@ -35,23 +35,28 @@
                             <input type="text" name="email" id="email" />
                         </div>
                         <div class="field">
-                            <label for="password">Password</label>
+                            <label id="pw-label" for="password">Password</label>
                             <input type="password" name="password" id="password" />
                         </div>
                         <div class="field">
-                            <input type="button" value="Submit" />
+                            <label for="password-confirm">Confirm Password</label>
+                            <input type="password" name="password-confirm" id="password-confirm" />
+                        </div>
+                        <div class="field">
+                            <input type="button" value="Submit" id="submit-button"/>
                         </div>
                     </div>
                 </form>
                 </div> 
         </div>
         <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.scrollex.min.js"></script>
+        <script src="/assets/js/jquery.scrolly.min.js"></script>
+        <script src="/assets/js/browser.min.js"></script>
+        <script src="/assets/js/breakpoints.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <script src="/static/js/signup.js"></script>
     </body>                        
 </html>
