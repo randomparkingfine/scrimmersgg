@@ -15,5 +15,22 @@ $('#submit-button').click(function() {
         $('#password-confirm').attr('placeholder', 'FIELD EMPTY');
         f = true;
     }
-    // waiting on backend to create post from form
+    if(f){return;}
+    $.post(
+        "/php/signUp.php",
+        {
+            username:$('#name').val(),
+            email:$('#email').val(),
+            password:$('#password').val(),
+        },
+        function(data) {
+            if(data == "taken"){
+                $('#nameLabel').text('Username - Take');
+                $('#nameLabel').attr('color', 'red');
+            }
+            if(data['success']) {
+                // redirect link to the user's page
+            }
+        }
+    );
 });
