@@ -4,9 +4,14 @@ Not going to connect _everything_ just yet but soon^tm
 
 > [-1] Sign up page
 
-> [0] Game regional pages
+> [0] Game pages
 
-> [1/2] Team list pages
+Each game page should have the following:
+
+1. Navbar with some (likely)site-wide links - `Home` `OtherGame` `OtherGame2` `etc...`
+
+2. Filter fields - filter by region/game-specific-rank/etc
+
 
 # [2] Dynamic things
 
@@ -22,7 +27,8 @@ Team registration
 
 # Licensing
 
-If this is to ever get published this will have to be fixed
+If any assets require credits, be sure to credit those things.
+For now our licensing should be fine(hopefully).
 
 # Links
 

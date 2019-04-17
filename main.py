@@ -3,6 +3,7 @@
 from flask import Flask, render_template
 from flask import send_from_directory
 
+import config
 app = Flask('scrimmers', template_folder='static/html')
 
 # Some basic routing
@@ -10,8 +11,10 @@ app = Flask('scrimmers', template_folder='static/html')
 def homepage():
     return render_template('index.html')
 
-# Library routes
-# The frontend has a few special case routes that we need to account for
+'''
+Library routes
+The frontend has a few special case routes that we need to account for
+ '''
 @app.route('/assets/js/<path:filename>')
 def libJS(filename):
     # this path should be relative i guess
@@ -25,33 +28,16 @@ def libCSS(filename):
 def libFONTS(filename):
     return send_from_directory('./assets/fonts/', filename)
 
-# Dev routes
-# These routes are things that we make or override ourselves
-# We'll start with some root level pages first
-@app.route('/about')
-def aboutPage():
-    return render_template('about.html')
-
-@app.route('/signup')
-def signupPage():
-    return render_template('signup.html')
-
 @app.route('/images/<path:filename>')
 def staticImages(filename):
     return send_from_directory('./images/', filename)
 
-# Each game gets a region page for simplicity sake
-@app.route('/region/<path:filename>')
-def serveRegion(filename):
-    # File name is going to be the game 
-    # File names are region-<filename>.html
-    game = f'region-{filename}.html'
-    print(game)
-    return send_from_directory('./static/html/', game)
-
-@app.route('/elements')
-def elements():
-    return render_template('elements.html')
+# Give us back the page which sits at the url's base level
+@app.route('/<path:filename>')
+def gamePage(filename):
+    print(f'{filename} referenced')
+    if filename in config.basePages:
+        return render_template(config.basePages[filename])
 
 if __name__ == "__main__":
     app.run(debug=True)
