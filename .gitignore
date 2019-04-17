@@ -6,3 +6,5 @@ bin/
 include/
 lib/
 gitmsg
+# PHP Library things
+AltoRouter.php
