@@ -5,3 +5,5 @@
 bin/
 include/
 lib/
+# PHP Library things
+AltoRouter.php
