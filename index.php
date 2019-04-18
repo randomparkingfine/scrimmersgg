@@ -6,27 +6,6 @@ $router = new AltoRouter();
 // Base level pages
 $router->map('GET', '/', function() {
 	require __DIR__ . '/static/html/index.html';
-});
-
-$router->map('GET', '/about', function() {
-	require __DIR__ . '/static/html/index.html';
-});
-
-$router->map('GET', '/[a:game]', function($game) {
-	$games = array("csgo");
-	echo "game found";
-	if(in_array($game, $games)){ 
-		require __DIR__ . '/static/html/' . game . '.html';
-	}
-});
-
-/*
-$router->map('GET', '/[a:basePage]/', function ($baseGame) {
-	// TODO: dynamic game data request things
-	// get that games page
-	require __DIR__ . '/static/html/' . $baseGame . '.html';
-});
- */
 
 // User pages which don't exist yet
 $router->map('GET', '/user/[i:id]', function($id) {
@@ -34,6 +13,18 @@ $router->map('GET', '/user/[i:id]', function($id) {
 	require __DIR__ . '/static/html/user.html'; // yfw 404 page 404's
 });
 
+$router->map('GET', '/about', function() {
+	require __DIR__ . '/static/html/about.html';
+});
+
+$router->map('GET', '/signup', function() {
+	require __DIR__ . '/static/html/signup.html';
+});
+
+// games 
+$router->map('GET', '/game/[a:game]', function($game) {
+	require __DIR__ . '/static/html/' . $game . '.html';
+});
 $match=$router->match();
 
 // Checking if we have a verified request match
