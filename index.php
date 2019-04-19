@@ -6,7 +6,7 @@ $router = new AltoRouter();
 // Base level pages
 $router->map('GET', '/', function() {
 	require __DIR__ . '/static/html/index.html';
-
+});
 // User pages which don't exist yet
 $router->map('GET', '/user/[i:id]', function($id) {
 	// NOTE: for now just return the template
@@ -23,7 +23,15 @@ $router->map('GET', '/signup', function() {
 
 // games 
 $router->map('GET', '/game/[a:game]', function($game) {
-	require __DIR__ . '/static/html/' . $game . '.html';
+	$games = array(
+		'qc'=>'Quake Champions', 
+		'csgo'=>'Counter-Strike: Global Offensive',
+		'apex'=>'Apex Legends'
+	);
+	if(!isset($_GET['game'])) {
+		$_GET['game'] = $games[$game];
+	}
+	require __DIR__ . '/dynamic/teams.php';
 });
 
 // helper function to check that we have all parameters for a signup
