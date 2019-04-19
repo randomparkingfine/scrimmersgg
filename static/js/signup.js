@@ -28,9 +28,6 @@ $('#submit-button').click(function() {
                 $('#nameLabel').text('Username - Take');
                 $('#nameLabel').attr('color', 'red');
             }
-            if(data['success']) {
-                // redirect link to the user's page
-            }
         }
     );
 });
