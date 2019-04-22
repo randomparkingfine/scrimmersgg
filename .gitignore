@@ -8,3 +8,4 @@ lib/
 gitmsg
 # PHP Library things
 AltoRouter.php
+vendor/
