@@ -1,5 +1,5 @@
 <?php
-require 'AltoRouter.php';
+require 'vendor/altorouter/altorouter/AltoRouter.php';
 
 $router = new AltoRouter();
 
@@ -17,6 +17,11 @@ $router->map('GET', '/about', function() {
 	require __DIR__ . '/static/html/about.html';
 });
 
+/*
+$route->map('POST', '/new-user', function() {
+	// crazy validation stuff
+});
+*/
 $router->map('GET', '/signup', function() {
 	require __DIR__ . '/static/html/signup.html';
 });
