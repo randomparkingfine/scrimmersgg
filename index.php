@@ -5,7 +5,7 @@ $router = new AltoRouter();
 
 // Base level pages
 $router->map('GET', '/', function() {
-	require __DIR__ . '/static/html/index.html';
+	require __DIR__ . '/static/html/land.html';
 });
 // User pages which don't exist yet
 $router->map('GET', '/user/[i:id]', function($id) {
