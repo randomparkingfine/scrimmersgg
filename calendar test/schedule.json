@@ -1,0 +1,7 @@
+[{
+    "title":"Practice time",
+    "startTime": "19:00", 
+    "endTime": "22:00", 
+    
+    "daysOfWeek": "[ 1, 4 ]"
+}]
