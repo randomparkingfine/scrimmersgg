@@ -3,5 +3,8 @@
    "description": "based and redpilled",
    "require": {
       "altorouter/altorouter": "^1.2"
+   },
+   "require-dev": {
+   	"heroku/heroku-buildpack-php":"dev-master"
    }
 }
