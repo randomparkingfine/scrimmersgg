@@ -59,6 +59,8 @@ if(is_array($match) && is_callable($match['target'])){
 }
 else {
 	// dank 404
+	echo 'sort of';
 	header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+	echo 'sort of';
 }
 ?>
