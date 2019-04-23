@@ -9,6 +9,7 @@ Whats covered:
 3. Sending some test data from a _local machine_ to the _remote database_
 4. Interacting with that database with _php_
 
+NOTE: _this was done on Debian Stretch with ZSH as my shell but this general workflow should work for most users_
 
 ## Heroku Plugin
 
@@ -47,8 +48,8 @@ _Default schema can be left out for later_.
 NOTE: if you're on a \*nix system the password might say something about a keychain(really who uses this feature).
 As long as you have the password handy you can always ignore any warnings and copy paste the database password in when asked.
 
-_Read the whole message because_: sometimes sql versions are completely compatible but it _should_ be fine for our purposes
-of upload purely educational sample data.
+_Read the whole message because_: sometimes sql versions are _not_ completely compatible but it _should_ be fine for our purposes
+of uploading purely educational sample data.
 
 ### Connecting via MySQL command line
 
@@ -81,4 +82,74 @@ If all goes well we can now proceed to uploading some test data.
 
 ## Uploading a Sample to the database
 
-TODO
+Assume we have a file `USERS_SAMPLE.sql`.
+If you have a `.db` file just check the content of the file, I'm willing to bet a few sheckels
+that it's just a bunch of sql commands in plaintext.
+
+### Using MySQL Workbench
+
+Connect through the database connection you setup earlier; you may have to restart MySQL Workbench the first time.
+On the left find Data `Import/Restore` and use the `Import from Dump Project Folder` option.
+
+Scroll down and `Start Import`.
+
+Once done you can verify its there by checking what tables you can export under `Data Export` on the left.
+
+### Using the terminal
+
+The command you're looking for is: `mysql -u foo -p heroku_asdf -h some-cool-thing.what.ever < some-file.sql`
+
+It will will ask for the password like before.
+Then just wait for the file to upload to the server.
+
+Here's some sample output:
+```
+smolltucc  ~  % ls *sql
+USERS_SAMPLE.sql
+smolltucc  ~  % mysql -u foo -p heroku_asdf -h some-cool-thing.what.ever < USERS_SAMPLE.sql
+Enter password: 
+smolltucc  ~  %
+```
+
+If nothing seemingly went wrong then you should be setup to try some php on it.
+
+## PHP Queries
+
+Below is a very basic php script to show the tables in our database.
+If the table is there then the data is also there, so I won't concern this guide with looking through columns.
+
+```php
+// We're using this array as a sort of 'config' to make connecting a bit cleaner looking
+$remote = array(
+	"host"		=>  "some-cool-thing.what.ever",	// site 
+	"name"		=>  "heroku_asdf",			        // database name
+	"username"	=>  "foo",					        // username
+	"password"	=>  "bar"						    // password for user
+);
+// Try connecting to the database
+$db = mysqli_connect(
+    $remote['host'], 
+    $remote['username'], 
+    $remote['password'], 
+    $remote['name']) 
+    or die('Couldn\'t connect to db' . $db->connect_error);
+
+// Try querying the databse for allthe available tables 
+$tables = mysqli_query($db, "SHOW TABLES FROM " . $remote['name'] . ';');
+
+// If there is no table then something really wrong happened
+if(!$tables) {
+	echo 'tables no able to list :(';
+	mysqli_close($db);
+	exit;
+}
+// Show off the table(s) available to us
+while($row = mysqli_fetch_row($tables)) {
+	echo "Table: {$row[0]}\n";
+}
+mysqli_close($db);
+```
+
+This script can also be ran with `php -S localhost:8000`.
+It should still work because we're connecting with the user creds 
+provided to us by heroku.
