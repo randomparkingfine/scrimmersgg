@@ -9,3 +9,5 @@ gitmsg
 # PHP Library things
 AltoRouter.php
 vendor/
+.DS_Store
+index.php.tmp.html
