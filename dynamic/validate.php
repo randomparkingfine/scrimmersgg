@@ -7,7 +7,7 @@
     $email_regex = "[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}";
     
     $con=mysqli_connect("localhost","root","","my_db");
-    $check="SELECT * FROM users WHERE email = '$_POST[`email`]' OR username = '$_POST[`username`]'";
+    $check='SELECT * FROM users WHERE email=`' . $_POST['email'] . '`OR' . 'username = `' . $_POST['username'] . '`;';
     
     $stmt = $conn->prepare($sql);
     $stmt->execute();
