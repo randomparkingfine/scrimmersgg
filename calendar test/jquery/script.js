@@ -120,3 +120,18 @@ $(document).ready(
         $('#toSunday').append("<option value='24'> 12:00 PM</option>");
     })
 );
+
+
+
+$('#submitBtn').on('click', function(){
+    if ($('#mondayCheckbox').is(':checked')) {
+        if ($('#toMonday').val() !== null) {
+            var str = '[{"title":"Practice time",'
+            var start = $('#fromMonday').val();
+            str += '"startTime" : "' + start + ':00",'
+            var end = $('#toMonday').val();
+            str += '"endTime" : "' + end + ':00",'
+            str += '"daysOfWeek": "[1]}]"'
+        }
+    }
+})
