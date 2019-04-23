@@ -4,4 +4,11 @@
     "endTime": "22:00", 
     
     "daysOfWeek": "[ 1, 4 ]"
+},
+{
+    "title":"Practice time",
+    "startTime": "19:00", 
+    "endTime": "20:00", 
+    
+    "daysOfWeek": "[ 3, 5 ]"   
 }]
