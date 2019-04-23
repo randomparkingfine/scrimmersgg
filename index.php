@@ -39,18 +39,14 @@ $router->map('GET', '/game/[a:game]', function($game) {
 	require __DIR__ . '/dynamic/teams.php';
 });
 
-// helper function to check that we have all parameters for a signup
-function properSignUp($fields) {
-	return $fields['username'] && $fields['password'] && $fields['email'];
-}
 // User request route
 $router->map('POST', '/php/signup', function() {
-	// 1. Create the new user entry in our database
-	// 2. Assuming we successfully did 1 we can send them to a success page
-	// 3. that page will have a link to go the homepage with them logged in
-	if(properSignUp($_POST)) {
-		require __DIR__ . '/static/php/success.php';
-	}
+	// 1. Check if fields are set
+	// 2. Check if username is unique
+	// 3. Check if email is valid email
+	// 4. Create a new entry in database
+	$fields = $_POST;
+	require __DIR__ . '/dynamic/php/validate.php';
 });
 
 $match=$router->match();
