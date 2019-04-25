@@ -20,9 +20,10 @@
 		$sql = "INSERT INTO user(email, username,password) VALUES (:email, :username, :password)";
 
 		$stmt = getDBConnection()->prepare($sql);
-		$stmt->execute(array(":email" => $parameters[":email"],
-		":username" => $parameters[":username"],
-		":password" => $parameters[":password"]
-		))
+		$stmt->execute(array(
+			":email" => $parameters[":email"],
+			":username" => $parameters[":username"],
+			":password" => $parameters[":password"]
+		));
 	}
 ?>
