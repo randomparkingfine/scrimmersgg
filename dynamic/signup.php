@@ -9,7 +9,9 @@
 		
 		$options = [
 			'cost' => 12,
-					];
+            'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+            'salt' => generateBase62String(22),
+        ];
 
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 		$parameters[":password"]= $hashedPassword;
