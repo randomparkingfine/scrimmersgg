@@ -42,28 +42,15 @@
                         </thead>
                     </table>
 <?php
-// here we populate the table with entries from our database
-$config = array(
-	'username'=>'b076f7bfe24b18',
-	'password'=>'5c066acc',
-	'host'=>'us-cdbr-iron-east-02.cleardb.net',
-	'name'=>'heroku_4f58a1b681d6fa5'
-);
-$db = mysqli_connect(
-	$config['host'],
-	$config['username'], 
-	$config['password'], 
-	$config['name']) or die('Couldn\'t connect to db' . $db->connect_error);
-
-// now we query the table for users emails and passwords OMEGALUL
-$lol = mysqli_query($db, "SELECT * FROM users_sample;");
-if(!$lol) {
+require 'db.php'
+$db = new ClearDB();
+$db->connect();
+$example = mysqli_query($db->conn, "SELECT * from users_sample;");
+if(!$example) {
 	echo 'couldnt find anything';
 }
 
-// yote
-while($row = mysqli_fetch_row($lol)) {
-	//var_dump($row);
+while($row = mysqli_fetch_row($example)) {
 	echo '<tr>'.$row[1].'</tr><br>';
 }
 ?>
