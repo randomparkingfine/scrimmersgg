@@ -2,13 +2,19 @@
 
 class ClearDB {
 	// some default values for 
-	private $username = getenv('CLEARDB_USERNAME'); 
-	private $password = getenv('CLEARDB_PASSWORD');
-	private $host = getenv('CLEARDB_HOST');
-	private $dbname = getenv('CLEARDB_NAME');
+	private $username;
+	private $password;
+	private $host;
+	private $dbname;
 
-	private $conn = null;
+	public $conn = null;
 
+	public function __construct() {
+		$this->username = getenv('CLEARDB_USERNAME'); 
+		$this->password = getenv('CLEARDB_PASSWORD');
+		$this->host = getenv('CLEARDB_HOST');
+		$this->dbname = getenv('CLEARDB_NAME');
+	}
 	public function connect() {
 		// True if a connection was established 
 		// False if a connection failed
