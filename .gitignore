@@ -10,4 +10,4 @@ gitmsg
 AltoRouter.php
 vendor/
 .DS_Store
-index.php.tmp.html.env
+env
