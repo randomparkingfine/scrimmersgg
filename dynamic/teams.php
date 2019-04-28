@@ -41,6 +41,17 @@
                             <th>Looking for</th>
                         </thead>
                     </table>
+<?php
+require 'db.php';
+$db = new ClearDB();
+$example = mysqli_query($db->conn, "SELECT * from users_sample;");
+if(!$example) {
+	echo 'couldnt find anything';
+}
+while($row = mysqli_fetch_row($example->conn)) {
+	echo '<tr>'.$row[1].'</tr><br>';
+}
+?>
                 </div>
             </section>
         </div>

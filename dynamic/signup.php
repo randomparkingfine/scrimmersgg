@@ -4,12 +4,16 @@
 		$conn = getDBConnection();
 		$parameters = array();
 
-		$parameters[":email"]= $_POST["email"];
 		$parameters[":username"]= $_POST["username"];
 		
 		$options = [
 			'cost' => 12,
-		];
+            'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
+            'salt' => generateBase62String(22),
+        ];
+        
+        $hashedEmail = password_hash($_POST['email'], PASSWORD_BCRYPT,$options);
+        $parameters[":email"] = $hashedEmail;
 
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 		$parameters[":password"]= $hashedPassword;
