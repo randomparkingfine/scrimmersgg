@@ -1,7 +1,7 @@
 <?php
 
 class ClearDB {
-	// some default values for 
+	// some default values for configuration pruposes
 	private $username;
 	private $password;
 	private $host;
@@ -14,6 +14,7 @@ class ClearDB {
 		$this->password = getenv('CLEARDB_PASSWORD');
 		$this->host = getenv('CLEARDB_HOST');
 		$this->dbname = getenv('CLEARDB_NAME');
+		self::connect();
 	}
 	public function connect() {
 		// True if a connection was established 
@@ -33,9 +34,5 @@ class ClearDB {
 	public function close() {
 		$this->conn->close();
 	}
-
-
 }
-
-
 ?>
