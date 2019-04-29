@@ -50,6 +50,7 @@ use Medoo\Medoo;
 $db = new Medoo($cleardb_config);
 
 $data = $db->select('users_sample', ['first_name']);
+echo '<tr> Just some mock test data :^) <tr><br>';
 foreach($data as $item) {
     echo '<tr>' . $item['first_name'] . '</tr><br>';
 }
