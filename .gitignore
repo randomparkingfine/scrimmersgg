@@ -11,3 +11,5 @@ AltoRouter.php
 vendor/
 .DS_Store
 .env
+mimic.sh
+composer.lock

@@ -42,16 +42,16 @@
                         </thead>
                     </table>
 <?php
+// Example ussage of new library
+require __DIR__ . '/../vendor/autoload.php';
 require 'db.php';
-$db = new ClearDB();
-$example = mysqli_query($db->conn, "SELECT * from users_sample;");
-if(mysqli_connect_errno()) {
-    echo mysqli_connect_errno();
-    $db->close();
-    exit;
-}
-while($row = mysqli_fetch_row($example->conn)) {
-	echo '<tr>'.$row[1].'</tr><br>';
+use Medoo\Medoo;
+
+$db = new Medoo($cleardb_config);
+
+$data = $db->select('users_sample', ['first_name']);
+foreach($data as $item) {
+    echo '<tr>' . $item['first_name'] . '</tr><br>';
 }
 ?>
                 </div>
