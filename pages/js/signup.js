@@ -17,7 +17,7 @@ $('#submit-button').click(function() {
     }
     if(f){return;}
     $.post(
-        "/php/signup",
+        "/server/signup",
         {
             username:$('#name').val(),
             email:$('#email').val(),

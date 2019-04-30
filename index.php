@@ -1,5 +1,7 @@
 <?php
+require 'server/db.php';
 require 'vendor/altorouter/altorouter/AltoRouter.php';
+use Medoo\Medoo;
 
 $router = new AltoRouter();
 
@@ -8,20 +10,25 @@ $router->map('GET', '/', function() {
 	require __DIR__ . '/pages/html/land.html';
 });
 // User pages which don't exist yet
-$router->map('GET', '/user/[i:id]', function($id) {
-	// NOTE: for now just return the template
-	require __DIR__ . '/pages/html/user.html'; // yfw 404 page 404's
+$router->map('GET', '/user/[a:id]', function($id) {
+    // check to make sure the requested user even exists
+    $db = new Medoo($cleardb_config);
+    $data = $db->select('users', ['username'], ['username'=>$id]);
+    if(count($data)) {
+        $user_id = $id;
+        require __DIR__ . '/pages/html/user.php'; // yfw 404 page 404's
+    }
+    else {
+	    header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+    }
+
 });
 
 $router->map('GET', '/about', function() {
 	require __DIR__ . '/pages/html/about.html';
 });
 
-/*
-$route->map('POST', '/new-user', function() {
-	// crazy validation stuff
-});
-*/
+
 $router->map('GET', '/signup', function() {
 	require __DIR__ . '/pages/html/signup.html';
 });
@@ -40,7 +47,7 @@ $router->map('GET', '/game/[a:game]', function($game) {
 });
 
 // User request route
-$router->map('POST', '/php/signup', function() {
+$router->map('POST', '/server/signup', function() {
 	// 1. Check if fields are set
 	// 2. Check if username is unique
 	// 3. Check if email is valid email
@@ -55,8 +62,6 @@ if(is_array($match) && is_callable($match['target'])){
 }
 else {
 	// dank 404
-	echo 'sort of';
 	header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
-	echo 'sort of';
 }
 ?>
