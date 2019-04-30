@@ -5,16 +5,16 @@ $router = new AltoRouter();
 
 // Base level pages
 $router->map('GET', '/', function() {
-	require __DIR__ . '/static/html/land.html';
+	require __DIR__ . '/pages/html/land.html';
 });
 // User pages which don't exist yet
 $router->map('GET', '/user/[i:id]', function($id) {
 	// NOTE: for now just return the template
-	require __DIR__ . '/static/html/user.html'; // yfw 404 page 404's
+	require __DIR__ . '/pages/html/user.html'; // yfw 404 page 404's
 });
 
 $router->map('GET', '/about', function() {
-	require __DIR__ . '/static/html/about.html';
+	require __DIR__ . '/pages/html/about.html';
 });
 
 /*
@@ -23,7 +23,7 @@ $route->map('POST', '/new-user', function() {
 });
 */
 $router->map('GET', '/signup', function() {
-	require __DIR__ . '/static/html/signup.html';
+	require __DIR__ . '/pages/html/signup.html';
 });
 
 // games 
@@ -36,7 +36,7 @@ $router->map('GET', '/game/[a:game]', function($game) {
 	if(!isset($_GET['game'])) {
 		$_GET['game'] = $games[$game];
 	}
-	require __DIR__ . '/dynamic/teams.php';
+	require __DIR__ . '/server/teams.php';
 });
 
 // User request route
@@ -46,7 +46,7 @@ $router->map('POST', '/php/signup', function() {
 	// 3. Check if email is valid email
 	// 4. Create a new entry in database
 	$fields = $_POST;
-	require __DIR__ . '/dynamic/php/validate.php';
+	require __DIR__ . '/server/validate.php';
 });
 
 $match=$router->match();
