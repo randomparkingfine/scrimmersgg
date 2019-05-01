@@ -7,14 +7,39 @@ $router = new AltoRouter();
 
 // Base level pages
 $router->map('GET', '/', function() {
-	require __DIR__ . '/pages/html/land.html';
+	require __DIR__ . '/pages/html/land.php';
 });
 // User pages which don't exist yet
+
+$router->map('GET', '/about', function() {
+	require __DIR__ . '/pages/html/about.html';
+});
+
+
+// These requests lead to changes in session states so they're grouped here
+$router->map('GET', '/signup', function() {
+	require __DIR__ . '/pages/html/signup.html';
+});
+$router->map('GET', '/login', function() {
+	require __DIR__ . '/pagess/html/login.php';
+});
+$router->map('GET', '/logout', function() {
+	require __DIR__ . '/pages/html/logout.php';
+});
+
+// Team pages
+$router->map('GET', '/team/[a:id]', function($id) {
+	// the id is the team owner id
+	require __DIR__ . '/pages/html/teams.php';
+}
+
+// User pages
 $router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
     $db = new Medoo($cleardb_config);
     $data = $db->select('users', ['username'], ['username'=>$id]);
-    if(count($data)) {
+	// we should only find 1 player from this
+    if(count($data)==1) {
         $user_id = $id;
         require __DIR__ . '/pages/html/user.php'; // yfw 404 page 404's
     }
@@ -23,16 +48,6 @@ $router->map('GET', '/user/[a:id]', function($id) {
     }
 
 });
-
-$router->map('GET', '/about', function() {
-	require __DIR__ . '/pages/html/about.html';
-});
-
-
-$router->map('GET', '/signup', function() {
-	require __DIR__ . '/pages/html/signup.html';
-});
-
 // games 
 $router->map('GET', '/game/[a:game]', function($game) {
 	$games = array(
