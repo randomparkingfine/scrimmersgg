@@ -172,14 +172,110 @@ $(document).ready(
 
 
 $('#submitBtn').on('click', function(){
-    if ($('#mondayCheckbox').is(':checked')) {
-        if ($('#toMonday').val() !== null) {
-            var str = '[{"title":"Practice time",'
-            var start = $('#fromMonday').val();
-            str += '"startTime" : "' + start + ':00",'
-            var end = $('#toMonday').val();
-            str += '"endTime" : "' + end + ':00",'
-            str += '"daysOfWeek": "[1]}]"'
-        }
-    }
+    var mondayTime = mondayHours();
+    var tuesdayTime = tuesdayHours();
+    var wednesdayTime = wednesdayHours();
+    var thursdayTime = thursdayHours();
+    var fridayTime = fridayHours();
+    var saturdayTime = saturdayHours();
+    var sundayTime = sundayHours();
+    console.log ("Monday " + mondayTime);
+    console.log("Tuesday " + tuesdayTime);
+    console.log ("Wednesday " + mondayTime);
+    console.log("Thursday " + tuesdayTime);
+    console.log ("Friday " + mondayTime);
+    console.log("Saturday " + tuesdayTime);
+    console.log ("Sunday " + mondayTime);
+    console.log(tuesdayTime === mondayTime);
 })
+
+function mondayHours() {
+    var str = "";
+    if (parseInt($("#fromMonday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromMonday").val() + " " + $("#toMonday").val();
+    }
+    return str;
+}
+
+function tuesdayHours() {
+    var str = "";
+    if (parseInt($("#fromTuesday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromTuesday").val() + " " + $("#toTuesday").val();
+    }
+    return str;
+}
+
+function wednesdayHours() {
+    var str = "";
+    if (parseInt($("#fromWednesday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromWednesday").val() + " " + $("#toWednesday").val();
+    }
+    return str;
+}
+
+function thursdayHours() {
+    var str = "";
+    if (parseInt($("#fromThursday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromThursday").val() + " " + $("#toThursday").val();
+    }
+    return str;
+}
+
+function fridayHours() {
+    var str = "";
+    if (parseInt($("#fromFriday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromFriday").val() + " " + $("#toFriday").val();
+    }
+    return str;
+}
+
+function saturdayHours() {
+    var str = "";
+    if (parseInt($("#fromSaturday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromSaturday").val() + " " + $("#toSaturday").val();
+    }
+    return str;
+}
+
+function sundayHours() {
+    var str = "";
+    if (parseInt($("#fromSunday").val()) === -1) 
+    {
+        return null;
+    } 
+    else
+    {
+        str += $("#fromSunday").val() + " " + $("#toSunday").val();
+    }
+    return str;
+}
