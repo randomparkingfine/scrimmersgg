@@ -1,5 +1,5 @@
 <?php
-require 'vendor/altorouter/altorouter/AltoRouter.php';
+require 'AltoRouter.php';
 
 $router = new AltoRouter();
 
@@ -8,9 +8,9 @@ $router->map('GET', '/', function() {
 	require __DIR__ . '/static/html/land.html';
 });
 // User pages which don't exist yet
-$router->map('GET', '/user/[i:id]', function($id) {
-	// NOTE: for now just return the template
-	require __DIR__ . '/static/html/user.html'; // yfw 404 page 404's
+$router->map('GET', '/user/[a:id]', function($id) {//       /[i:id]', function($id
+	
+	require __DIR__ . '/dynamic/userPage.html';
 });
 
 $router->map('GET', '/about', function() {
