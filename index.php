@@ -13,12 +13,12 @@ $router->map('GET', '/', function() {
 // User pages which don't exist yet
 
 $router->map('GET', '/about', function() {
-	require __DIR__ . '/pages/html/about.html';
+	require __DIR__ . '/pages/html/about.php';
 });
 
 
 // These requests lead to changes in session states so they're grouped here
-$router->map('GET', '/signup', function() {
+$router->map('GET|POST', '/signup', function() {
 	require __DIR__ . '/pages/html/signup.html';
 });
 $router->map('GET', '/login', function() {
@@ -31,7 +31,7 @@ $router->map('GET', '/logout', function() {
 // Team pages
 $router->map('GET', '/team/[a:id]', function($id) {
 	// the id is the team owner id
-	require __DIR__ . '/pages/html/team.php';
+	require __DIR__ . '/pages/html/teams.php';
 });
 
 // User pages

@@ -27,13 +27,26 @@
 						<ul class="links">
 							<li><a href="/">Home</a></li>
 							<li class="active"><a href="/about">About</a></li>
-							<li><a href="/signup">Signup</a></li>
+							<?php
+							 require __DIR__ . '/../../server/navbar.php';
+							if(!empty($_SESSION)) {
+								if(activeUser()) {
+									loggedInNav();
+								}
+								else {
+									defaultNav();
+								}
+							}
+							else {
+								defaultNav();
+							}
+							 ?>
+
 						</ul>
 						<ul class="icons">
 							<li><a href="https://github.com/smolltucc/scrimmersgg" class="icon fa-github"><span class="label">Github</span></a></li>
 						</ul>
 					</nav>
-				
 				<!-- Main -->
 					<div id="main">
 
