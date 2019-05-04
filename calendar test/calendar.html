@@ -62,12 +62,18 @@
           });
           $("#day-schedule").on('selected.artsy.dayScheduleSelector', function (e, selected) 
           {
-              var arr = []
+              var arr = "{";
               for (var i = 0; i < selected.length; i++)
               {
-                  arr.push(selected[i].dataset);
+                  arr +='"'+ i +'":';
+                  arr+= JSON.stringify(selected[i].dataset);
+                  if (i !== selected.length - 1)
+                    arr += ","
               }
+              arr += "}";
+              console.log(arr);
               str.push(arr);
+              console.log(str);
           })
           $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(
           {
@@ -77,21 +83,19 @@
 
       $('#selectedBtn').on("click",function()
       {
-          var test = "";
-          console.log(str);
-          for (var i = 0; i < str.length; i++)
-          {
-              for (var j = 0; j < str[i].length; j++)
-              {
-                  console.log(str[i][j]); 
-              }    
-          }
-          test = JSON.stringify(str);
-          console.log(test);
+          console.log(str[0]);
+          $.ajax({
+            type: "POST",
+            url: "../server/sendSchedule.php",
+            dataType: "json",
+            data: {'schedule': JSON.stringify(str)},
+            success: function(data, status) {
+                console.log("gucci");
+            }
+            
+          });
 
-          console.log("=====================================================");
-
-          console.log(JSON.parse(test));S
+          //console.log(test);
       });
   </script>
   </body>
