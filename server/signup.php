@@ -19,7 +19,6 @@ use Medoo\Medoo;
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 //		$parameters[":password"]= $hashedPassword;
 
-
 		$db->insert('user_sample',[
 			"first_name" => $_POST["username"],
 			"email" => $hashedEmail,

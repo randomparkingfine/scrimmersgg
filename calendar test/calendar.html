@@ -16,6 +16,7 @@
     <script src='fullcalendar/daygrid/main.js'></script>
     <script src='fullcalendar/timegrid/main.js'></script>  
 
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
@@ -41,232 +42,266 @@
 
     </script>
   </head>
-  <body>
-    <div id="container">
-      <div id='form'>
-        <input type="checkbox" name="monday" id="mondayCheckbox"> Monday
-        <!-----From: <input type="time" name="startMonday" placeholder="19:00 AM">
-        To: <input type="time" name="endMonday" placeholder="22:00"><br>--->
-        <span>  From</span>
-        <select id="fromMonday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toMonday">
-        </select><br>
-        <input type="checkbox" name="tuesday"> Tuesday
-        <span>  From</span>
-        <select id="fromTuesday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toTuesday">
-        </select><br>
-        <input type="checkbox" name="wednesday"> Wednesday
-        <span>  From</span>
-        <select id="fromWednesday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toWednesday">
-        </select><br>
-        <input type="checkbox" name="thursday"> Thursday
-        <span>  From</span>
-        <select id="fromThursday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toThursday">
-        </select><br>
-        <input type="checkbox" name="friday"> Friday
-        <span>  From</span>
-        <select id="fromFriday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toFriday">
-        </select><br>
-        <input type="checkbox" name="saturday"> Saturday
-        <span>  From</span>
-        <select id="fromSaturday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toSaturday">
-        </select><br>
-        <input type="checkbox" name="sunday"> Sunday
-        <span>  From</span>
-        <select id="fromSunday">
-          <option value="00">00:00 AM</option>
-          <option value="01">01:00 AM</option>
-          <option value="02">02:00 AM</option>
-          <option value="03">03:00 AM</option>
-          <option value="04">04:00 AM</option>
-          <option value="05">05:00 AM</option>
-          <option value="06">06:00 AM</option>
-          <option value="07">07:00 AM</option>
-          <option value="08">08:00 AM</option>
-          <option value="09">09:00 AM</option>
-          <option value="10">10:00 AM</option>
-          <option value="11">11:00 AM</option>
-          <option value="12">12:00 AM</option>
-          <option value="13">01:00 PM</option>          
-          <option value="14">02:00 PM</option>
-          <option value="15">03:00 PM</option>
-          <option value="16">04:00 PM</option>
-          <option value="17">05:00 PM</option>
-          <option value="18">06:00 PM</option>
-          <option value="19">07:00 PM</option>
-          <option value="20">08:00 PM</option>
-          <option value="21">09:00 PM</option>
-          <option value="22">10:00 PM</option>
-          <option value="23">11:00 PM</option>
-        </select>
-        <span>To</span>
-        <select id="toSunday">
-        </select><br>
-        <input type="button" value='Submit' id='submitBtn'>
-      </div> 
-      <br>
-      <div id='calendar'></div>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+          <header id="header">
+            <a href="index.html" class="logo">Massively</a>
+          </header>
+
+          <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+              <li><a href="index.html">This is Massively</a></li>
+              <li><a href="generic.html">Generic Page</a></li>
+              <li class="active"><a href="elements.html">Elements Reference</a></li>
+            </ul>
+            <ul class="icons">
+              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+              <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+              <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+          </nav>
+
+          <div id="main">
+            <div id='form'>
+              Monday
+              <!-----From: <input type="time" name="startMonday" placeholder="19:00 AM">
+              To: <input type="time" name="endMonday" placeholder="22:00"><br>--->
+              <span>  From</span>
+              <select id="fromMonday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toMonday">
+              </select><br>
+              Tuesday
+              <span>  From</span>
+              <select id="fromTuesday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toTuesday">
+              </select><br>
+              Wednesday
+              <span>  From</span>
+              <select id="fromWednesday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toWednesday">
+              </select><br>
+              Thursday
+              <span>  From</span>
+              <select id="fromThursday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toThursday">
+              </select><br>
+              Friday
+              <span>  From</span>
+              <select id="fromFriday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toFriday">
+              </select><br>
+              Saturday
+              <span>  From</span>
+              <select id="fromSaturday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toSaturday">
+              </select><br>
+              Sunday
+              <span>  From</span>
+              <select id="fromSunday">
+                <option value="-1">Select starting time or leave blank</option>
+                <option value="00">00:00 AM</option>
+                <option value="01">01:00 AM</option>
+                <option value="02">02:00 AM</option>
+                <option value="03">03:00 AM</option>
+                <option value="04">04:00 AM</option>
+                <option value="05">05:00 AM</option>
+                <option value="06">06:00 AM</option>
+                <option value="07">07:00 AM</option>
+                <option value="08">08:00 AM</option>
+                <option value="09">09:00 AM</option>
+                <option value="10">10:00 AM</option>
+                <option value="11">11:00 AM</option>
+                <option value="12">12:00 AM</option>
+                <option value="13">01:00 PM</option>          
+                <option value="14">02:00 PM</option>
+                <option value="15">03:00 PM</option>
+                <option value="16">04:00 PM</option>
+                <option value="17">05:00 PM</option>
+                <option value="18">06:00 PM</option>
+                <option value="19">07:00 PM</option>
+                <option value="20">08:00 PM</option>
+                <option value="21">09:00 PM</option>
+                <option value="22">10:00 PM</option>
+                <option value="23">11:00 PM</option>
+              </select>
+              <span>To</span>
+              <select id="toSunday">
+              </select><br>
+
+              <div class="field">
+                <input type="button" value='Submit' id='submitBtn'>
+              </div>
+            </div> 
+            <br>
+            <div id='calendar'></div>
+          </div>
     </div>
 
     <script SRC='jquery/script.js'></script>
