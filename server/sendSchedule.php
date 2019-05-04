@@ -7,6 +7,6 @@
     session_start();
     $email = $_SESSION['email'];
     $db = new Medoo($cleardb_config);
-    $sql = "UPDATE users SET schedule=$schedule WHERE email=$email";
+    $sql = "UPDATE users SET user_schedule=$schedule WHERE email=$email";
     $db->query($sql);
 ?>
