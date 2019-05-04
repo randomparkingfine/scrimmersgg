@@ -1,7 +1,12 @@
 <?php
 require 'server/db.php';
+<<<<<<< HEAD
 require 'AltoRouter.php'; // vendor/altorouter/altorouter/
+=======
+require 'AltoRouter.php';//vendor/altorouter/altorouter/
+>>>>>>> 92c463e9030df7d7803fda70d8d2114d53145eeb
 use Medoo\Medoo;
+
 
 $router = new AltoRouter();
 
@@ -12,7 +17,7 @@ $router->map('GET', '/', function() {
 // User pages which don't exist yet
 
 $router->map('GET', '/about', function() {
-	require __DIR__ . '/pages/html/about.html';
+	require __DIR__ . '/pages/html/about.php';
 });
 
 
@@ -36,6 +41,7 @@ $router->map('GET', '/team/[a:id]', function($id) {
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
+
     $db = new Medoo($cleardb_config);
     $data = $db->select('users', ['username'], ['username'=>$id]);
     // we should only find 1 player from this
@@ -62,14 +68,14 @@ $router->map('GET', '/game/[a:game]', function($game) {
 });
 
 // User request route
-$router->map('POST', '/server/signup', function() {
-	// 1. Check if fields are set
-	// 2. Check if username is unique
-	// 3. Check if email is valid email
-	// 4. Create a new entry in database
-	$fields = $_POST;
-	require __DIR__ . '/server/validate.php';
-});
+//$router->map('POST', '/server/signup', function() {
+//	// 1. Check if fields are set
+//	// 2. Check if username is unique
+//	// 3. Check if email is valid email
+//	// 4. Create a new entry in database
+//	$fields = $_POST;
+//	require __DIR__ . '/server/validate.php';
+//});
 
 $match=$router->match();
 if(is_array($match) && is_callable($match['target'])){

@@ -2,45 +2,15 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
+    <script
+    src="http://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="index.js"></script>
     <link rel="stylesheet" href="style_calendar.css">
 
-    <link href='fullcalendar/core/main.css' rel='stylesheet' />
-    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
-    <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
-
-    <script
-    src="http://code.jquery.com/jquery-3.4.0.min.js"
-    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-    crossorigin="anonymous"></script>
-    <script src='fullcalendar/core/main.js'></script>
-    <script src='fullcalendar/daygrid/main.js'></script>
-    <script src='fullcalendar/timegrid/main.js'></script>  
-
     <link rel="stylesheet" href="../assets/css/main.css" />
-    <script>
-
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: [ 'timeGrid' ],
-            defaultView: 'timeGridWeek',
-            //minTime: '00:00:00',
-            //maxTime: '24:00:00',
-            scrollTime: '18:00:00',
-            events: 'schedule.json'
-            /*[{
-                title:"Practice time",
-                startTime: '19:00', // a start time (10am in this example)
-                endTime: '22:00', // an end time (6pm in this example)
-                
-                daysOfWeek: [ 1, 4 ],// Repeat monday and thursday
-            }]*/
-        });
-        calendar.render();
-      });
-
-    </script>
+    
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -66,244 +36,63 @@
             </ul>
           </nav>
 
-          <div id="main">
-            <div id='form'>
-              Monday
-              <!-----From: <input type="time" name="startMonday" placeholder="19:00 AM">
-              To: <input type="time" name="endMonday" placeholder="22:00"><br>--->
-              <span>  From</span>
-              <select id="fromMonday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toMonday">
-              </select><br>
-              Tuesday
-              <span>  From</span>
-              <select id="fromTuesday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toTuesday">
-              </select><br>
-              Wednesday
-              <span>  From</span>
-              <select id="fromWednesday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toWednesday">
-              </select><br>
-              Thursday
-              <span>  From</span>
-              <select id="fromThursday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toThursday">
-              </select><br>
-              Friday
-              <span>  From</span>
-              <select id="fromFriday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toFriday">
-              </select><br>
-              Saturday
-              <span>  From</span>
-              <select id="fromSaturday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toSaturday">
-              </select><br>
-              Sunday
-              <span>  From</span>
-              <select id="fromSunday">
-                <option value="-1">Select starting time or leave blank</option>
-                <option value="00">00:00 AM</option>
-                <option value="01">01:00 AM</option>
-                <option value="02">02:00 AM</option>
-                <option value="03">03:00 AM</option>
-                <option value="04">04:00 AM</option>
-                <option value="05">05:00 AM</option>
-                <option value="06">06:00 AM</option>
-                <option value="07">07:00 AM</option>
-                <option value="08">08:00 AM</option>
-                <option value="09">09:00 AM</option>
-                <option value="10">10:00 AM</option>
-                <option value="11">11:00 AM</option>
-                <option value="12">12:00 AM</option>
-                <option value="13">01:00 PM</option>          
-                <option value="14">02:00 PM</option>
-                <option value="15">03:00 PM</option>
-                <option value="16">04:00 PM</option>
-                <option value="17">05:00 PM</option>
-                <option value="18">06:00 PM</option>
-                <option value="19">07:00 PM</option>
-                <option value="20">08:00 PM</option>
-                <option value="21">09:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23">11:00 PM</option>
-              </select>
-              <span>To</span>
-              <select id="toSunday">
-              </select><br>
-
-              <div class="field">
-                <input type="button" value='Submit' id='submitBtn'>
+          <div id="main">           
+              <h2>Schedule selector:</h2><br>
+              <div id='cal'>
+                <h5>Select your schedule by clicking on the calendar, then submit it by clicking on the button at the end of the page.</h5>
+                <h5>
+                  <div id="day-schedule">
+                  </div>
+                </h5>
               </div>
-            </div> 
-            <br>
-            <div id='calendar'></div>
+              <form>
+                <input type="button" value='Submit Your Schedule' id='selectedBtn'>
+              </form>
           </div>
     </div>
+    <script>
+      let str = [];
+      (function ($) {
+          $("#day-schedule").dayScheduleSelector({
+              days: [0, 1, 2, 3, 4, 5, 6],
+              interval: 60,
+              startTime: '00:00',
+              endTime: '23:59',
+              stringDays  : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          });
+          $("#day-schedule").on('selected.artsy.dayScheduleSelector', function (e, selected) 
+          {
+              var arr = []
+              for (var i = 0; i < selected.length; i++)
+              {
+                  arr.push(selected[i].dataset);
+              }
+              str.push(arr);
+          })
+          $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(
+          {
 
-    <script SRC='jquery/script.js'></script>
+          });
+      })($);
+
+      $('#selectedBtn').on("click",function()
+      {
+          var test = "";
+          console.log(str);
+          for (var i = 0; i < str.length; i++)
+          {
+              for (var j = 0; j < str[i].length; j++)
+              {
+                  console.log(str[i][j]); 
+              }    
+          }
+          test = JSON.stringify(str);
+          console.log(test);
+
+          console.log("=====================================================");
+
+          console.log(JSON.parse(test));S
+      });
+  </script>
   </body>
 </html>
