@@ -31,8 +31,8 @@ $router->map('GET', '/logout', function() {
 // Team pages
 $router->map('GET', '/team/[a:id]', function($id) {
 	// the id is the team owner id
-	require __DIR__ . '/pages/html/teams.php';
-}
+	require __DIR__ . '/pages/html/team.php';
+});
 
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
