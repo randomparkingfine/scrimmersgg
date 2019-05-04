@@ -1,6 +1,6 @@
 <?php
 require 'server/db.php';
-require 'vendor/altorouter/altorouter/AltoRouter.php';
+require 'AltoRouter.php'; // vendor/altorouter/altorouter/
 use Medoo\Medoo;
 
 $router = new AltoRouter();
@@ -31,24 +31,24 @@ $router->map('GET', '/logout', function() {
 $router->map('GET', '/team/[a:id]', function($id) {
 	// the id is the team owner id
 	require __DIR__ . '/pages/html/teams.php';
-}
+});
 
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
     $db = new Medoo($cleardb_config);
     $data = $db->select('users', ['username'], ['username'=>$id]);
-	// we should only find 1 player from this
+    // we should only find 1 player from this
     if(count($data)==1) {
         $user_id = $id;
         require __DIR__ . '/pages/html/user.php'; // yfw 404 page 404's
     }
     else {
-	    header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+        header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
     }
 
 });
-// games 
+// games
 $router->map('GET', '/game/[a:game]', function($game) {
 	$games = array(
 		'qc'=>'Quake Champions', 
