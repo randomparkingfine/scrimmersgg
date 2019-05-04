@@ -40,20 +40,20 @@
                             <th>Schedule</th>
                             <th>Looking for</th>
                         </thead>
+                    <?php
+                    // Example ussage of new library
+                    require __DIR__ . '/../vendor/autoload.php';
+                    require 'db.php';
+                    use Medoo\Medoo;
+
+                    $db = new Medoo($cleardb_config);
+
+                    $data = $db->select('users_sample', ['first_name', 'email','id']);
+                    foreach($data as $item) {
+                        echo '<tr><td>' . $item['id'] . '</td><td>'  . $item['first_name'] . '</td><td>' . $item['email'] . '</td></tr>';
+                    }
+                    ?>
                     </table>
-<?php
-// Example ussage of new library
-require __DIR__ . '/../vendor/autoload.php';
-require 'db.php';
-use Medoo\Medoo;
-
-$db = new Medoo($cleardb_config);
-
-$data = $db->select('users_sample', ['first_name']);
-foreach($data as $item) {
-    echo '<tr>' . $item['first_name'] . '</tr><br>';
-}
-?>
                 </div>
             </section>
         </div>
