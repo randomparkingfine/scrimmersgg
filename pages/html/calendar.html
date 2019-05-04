@@ -86,8 +86,8 @@
           console.log(str[0]);
           $.ajax({
             type: "POST",
-            url: "../server/sendSchedule.php",
-            dataType: "json",
+            url: "/schedule",
+            dataType: "text",
             data: {'schedule': JSON.stringify(str)},
             success: function(data, status) {
                 console.log("gucci");

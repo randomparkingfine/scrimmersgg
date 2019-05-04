@@ -16,6 +16,9 @@ $router->map('GET', '/about', function() {
 	require __DIR__ . '/pages/html/about.php';
 });
 
+$router->map('POST', '/schedule', function() {
+	require __DIR__ . '/server/sendSchedule.php';
+});
 
 // These requests lead to changes in session states so they're grouped here
 
