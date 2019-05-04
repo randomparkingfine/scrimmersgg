@@ -4,7 +4,13 @@ require 'db.php';
 use Medoo\Medoo;
 	function signUp($email = "",$password = "",$username = "") {
 		session_start();
-
+		
+		$test = array();
+		
+		$test["username"] = $_POST["username"];
+		$test["password"] = $_POST["password"];
+		$test["email"] = $_POST["email"];
+		
 		$db = new Medoo($cleardb_config);
 		
 		$options = [
@@ -18,9 +24,8 @@ use Medoo\Medoo;
 
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
 //		$parameters[":password"]= $hashedPassword;
-
-		$db->insert('user_sample',[
-			"first_name" => $_POST["username"],
+		$db->insert('users',[
+			"username" => $_POST["username"],
 			"email" => $hashedEmail,
 			"password" => $hashedPassword
 		]);
