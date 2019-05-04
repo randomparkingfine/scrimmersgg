@@ -19,10 +19,10 @@ $router->map('GET', '/about', function() {
 
 // These requests lead to changes in session states so they're grouped here
 $router->map('GET', '/signup', function() {
-	require __DIR__ . '/pages/html/signup.html';
+	require __DIR__ . '/pages/html/signup.php';
 });
-$router->map('GET', '/login', function() {
-	require __DIR__ . '/pagess/html/login.php';
+$router->map('POST|GET', '/login', function() {
+	require __DIR__ . '/pages/html/login.html';
 });
 $router->map('GET', '/logout', function() {
 	require __DIR__ . '/pages/html/logout.php';
