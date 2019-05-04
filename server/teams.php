@@ -45,12 +45,12 @@
                     require __DIR__ . '/../vendor/autoload.php';
                     require 'db.php';
                     use Medoo\Medoo;
-
+                        
                     $db = new Medoo($cleardb_config);
 
-                    $data = $db->select('users_sample', ['first_name', 'email','id']);
+                    $data = $db->select('teams', ['captain', 'game','team_name']);
                     foreach($data as $item) {
-                        echo '<tr><td>' . $item['id'] . '</td><td>'  . $item['first_name'] . '</td><td>' . $item['email'] . '</td></tr>';
+                        echo '<tr><td>' . $item['captain'] . '</td><td>'  . $item['game'] . '</td><td>' . $item['team_name'] . '</td></tr>';
                     }
                     ?>
                     </table>
