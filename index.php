@@ -1,6 +1,6 @@
 <?php
 require 'server/db.php';
-require 'AltoRouter.php';//vendor/altorouter/altorouter/
+require 'AltoRouter.php'; // vendor/altorouter/altorouter/
 use Medoo\Medoo;
 
 
@@ -18,11 +18,12 @@ $router->map('GET', '/about', function() {
 
 
 // These requests lead to changes in session states so they're grouped here
+
 $router->map('GET|POST', '/signup', function() {
 	require __DIR__ . '/pages/html/signup.html';
 });
-$router->map('GET', '/login', function() {
-	require __DIR__ . '/pagess/html/login.php';
+$router->map('POST|GET', '/login', function() {
+	require __DIR__ . '/pages/html/login.html';
 });
 $router->map('GET', '/logout', function() {
 	require __DIR__ . '/pages/html/logout.php';
@@ -40,17 +41,17 @@ $router->map('GET', '/user/[a:id]', function($id) {
 
     $db = new Medoo($cleardb_config);
     $data = $db->select('users', ['username'], ['username'=>$id]);
-	// we should only find 1 player from this
+    // we should only find 1 player from this
     if(count($data)==1) {
         $user_id = $id;
         require __DIR__ . '/pages/html/user.php'; // yfw 404 page 404's
     }
     else {
-	    header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+        header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
     }
 
 });
-// games 
+// games
 $router->map('GET', '/game/[a:game]', function($game) {
 	$games = array(
 		'qc'=>'Quake Champions', 
