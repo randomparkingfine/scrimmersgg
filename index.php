@@ -12,7 +12,7 @@ $router->map('GET', '/', function() {
 // User pages which don't exist yet
 
 $router->map('GET', '/about', function() {
-	require __DIR__ . '/pages/html/about.html';
+	require __DIR__ . '/pages/html/about.php';
 });
 
 
@@ -31,7 +31,7 @@ $router->map('GET', '/logout', function() {
 $router->map('GET', '/team/[a:id]', function($id) {
 	// the id is the team owner id
 	require __DIR__ . '/pages/html/teams.php';
-}
+});
 
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
