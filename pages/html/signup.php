@@ -18,7 +18,16 @@
                 <ul class="links">
                     <li><a href="/" class="scrolly">Home</a></li>
                     <li><a href="/about">About</a></li>
-                    <li class="active"><a href="/signup">Signup</a></li>
+					<?php
+					require __DIR__ . '/../../server/navbar.php';
+					if(activeUser()) {
+						loggedInNav();
+					}
+					else {
+						defaultNav('signup');
+					}
+					?>
+                    <li><a href="/signup">Signup</a></li>
                 </ul>
                 <ul class="icons">
                     <li><a href="https://github.com/smolltucc/scrimmersgg" class="icon fa-github"><span class="label">Github</span></a></li>
