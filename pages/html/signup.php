@@ -27,7 +27,6 @@
 						defaultNav('signup');
 					}
 					?>
-                    <li><a href="/signup">Signup</a></li>
                 </ul>
                 <ul class="icons">
                     <li><a href="https://github.com/smolltucc/scrimmersgg" class="icon fa-github"><span class="label">Github</span></a></li>
