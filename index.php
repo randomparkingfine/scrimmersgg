@@ -20,7 +20,7 @@ $router->map('GET', '/about', function() {
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
-	require __DIR__ . '/pages/html/signup.html';
+	require __DIR__ . '/pages/html/signup.php';
 });
 $router->map('POST|GET', '/login', function() {
 	require __DIR__ . '/pages/html/login.html';
