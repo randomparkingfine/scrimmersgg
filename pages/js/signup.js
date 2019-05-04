@@ -24,10 +24,11 @@ $('#submit-button').click(function() {
             password:$('#password').val(),
         },
         function(data) {
+            console.log(data);
             if(data == "taken"){
                 $('#nameLabel').text('Username - Take');
                 $('#nameLabel').attr('color', 'red');
             }
         }
-    );
+    ); 
 });

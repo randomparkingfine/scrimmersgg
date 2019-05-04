@@ -1,10 +1,11 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
+require 'db.php';
+use Medoo\Medoo;
 	function signUp($email = "",$password = "",$username = "") {
 		session_start();
-		$conn = getDBConnection();
-		$parameters = array();
 
-		$parameters[":username"]= $_POST["username"];
+		$db = new Medoo($cleardb_config);
 		
 		$options = [
 			'cost' => 12,
@@ -13,19 +14,15 @@
         ];
         
         $hashedEmail = password_hash($_POST['email'], PASSWORD_BCRYPT,$options);
-        $parameters[":email"] = $hashedEmail;
+//        $parameters[":email"] = $hashedEmail;
 
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
-		$parameters[":password"]= $hashedPassword;
+//		$parameters[":password"]= $hashedPassword;
 
-
-		$sql = "INSERT INTO user(email, username,password) VALUES (:email, :username, :password)";
-
-		$stmt = getDBConnection()->prepare($sql);
-		$stmt->execute(array(
-			":email" => $parameters[":email"],
-			":username" => $parameters[":username"],
-			":password" => $parameters[":password"]
-		));
+		$db->insert('user_sample',[
+			"first_name" => $_POST["username"],
+			"email" => $hashedEmail,
+			"password" => $hashedPassword
+		]);
 	}
 ?>
