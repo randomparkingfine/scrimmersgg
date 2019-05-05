@@ -1,5 +1,5 @@
 <?php
-
+require 'AltoRouter.php';
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/server/db.php';
 use Medoo\Medoo;
@@ -57,24 +57,26 @@ $router->map('POST', '/dbTeams.php', function() {
 
 
 
-$router->map('POST', '/dbTeams.php', function() {
-   require __DIR__ . '/server/dbTeams.php';
-});
-
-
     
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
-
-    $db = new Medoo(array(
+//$db = new Medoo($cleardb_config);
+$db = array(
 		'database_type' => 'mysql',
-		'database_name' => getenv('CLEARDB_NAME'),
-		'server' => getenv('CLEARDB_HOST'),
-		'username' => getenv('CLEARDB_USERNAME'),
-		'password' => getenv('CLEARDB_PASSWORD')
-	));
-    $data = $db->get('users', ['username'], ['username'=>$id]);
+		'database_name' => "heroku_4f58a1b681d6fa5",//getenv('CLEARDB_NAME'),
+		'server' => "us-cdbr-iron-east-02.cleardb.net",//getenv('CLEARDB_HOST'),
+		'username' => "16f9125243321f4",//getenv('CLEARDB_USERNAME'),
+		'password' => "b076f7bfe24b18"//getenv('CLEARDB_PASSWORD')
+);
+//    $db = new Medoo(array(
+//		'database_type' => 'mysql',
+//		'database_name' => getenv('CLEARDB_NAME'),
+//		'server' => getenv('CLEARDB_HOST'),
+//		'username' => getenv('CLEARDB_USERNAME'),
+//		'password' => getenv('CLEARDB_PASSWORD')
+//	));
+    $data = $db->get('users', 'username', ['username'=>$id]);
     // Check to  make sure the requested user exists at all
     if(count($data) != null) {
         $user_id = $id;
