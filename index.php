@@ -1,7 +1,13 @@
 <?php
+<<<<<<< HEAD
+require 'server/db.php';
+=======
 require __DIR__ . '/server/db.php';
+>>>>>>> 62e8fc76ac683d507e4173397a9689f29428c80d
 require 'AltoRouter.php'; // vendor/altorouter/altorouter/
 use Medoo\Medoo;
+    
+    session_start();
 
 
 $router = new AltoRouter();
@@ -43,11 +49,24 @@ $router->map('GET', '/logout', function() {
 });
 
 // Team pages
-$router->map('GET', '/team/[a:id]', function($id) {
+$router->map('GET|POST', '/team/[a:id]', function($id) {
 	// the id is the team owner id
+<<<<<<< HEAD
+//    if(empty($_POST)){
+             require __DIR__ . '/pages/html/teams.php';
+//    }else{
+//             require __DIR__ . '/server/dbTeams.php';
+//    }
+=======
 	require __DIR__ . '/pages/html/teams.php';
+>>>>>>> 62e8fc76ac683d507e4173397a9689f29428c80d
 });
 
+$router->map('POST', '/dbTeams.php', function() {
+   require __DIR__ . '/server/dbTeams.php';
+});
+
+    
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
@@ -73,8 +92,9 @@ $router->map('GET|POST', '/game/[a:game]', function($game) {
 	);
 	if(!isset($_GET['game'])) {
 		$_GET['game'] = $games[$game];
+        $_SESSION['game'] = $games[$game];
 	}
-	require __DIR__ . '/server/teams.php';
+	require __DIR__ . '/pages/html/teams.php';
 });
 
 // User request route
