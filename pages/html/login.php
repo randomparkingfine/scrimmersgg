@@ -49,7 +49,7 @@
 						</div>
 					</div>
 				</form>
-				<p id="reponse"></p>
+				<p id="response"></p>
 			</div>
 		</div>
         <!-- Scripts -->
