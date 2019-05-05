@@ -1,11 +1,12 @@
 <?php
-
 require __DIR__ .  '/server/db.php';
-require 'vendor/altorouter/altorouter/AltoRouter.php';
+require 'AltoRouter.php'; // vendor/altorouter/altorouter/
+require __DIR__ . '/vendor/autoload.php';
+
+
 use Medoo\Medoo;
     
-    session_start();
-
+session_start();
 
 
 $router = new AltoRouter();
@@ -27,7 +28,12 @@ $router->map('GET|POST', '/schedule', function() {
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
-	require __DIR__ . '/pages/html/signup.php';
+	if(empty($_POST)) {
+		require __DIR__ . '/pages/html/signup.php';
+	}
+	else {
+		require __DIR__ . '/server/signup.php';
+	}
 });
 $router->map('POST|GET', '/login', function() {
 	if(empty($_POST)) {
@@ -54,24 +60,36 @@ $router->map('POST', '/dbTeams.php', function() {
 
 
 
-
-
     
 // User pages
 $router->map('GET', '/user/[a:id]', function($name) {
     // check to make sure the requested user even exists
 
-    $db = new Medoo($cleardb_config);
-    $data = $db->select('users', ['username'], ['username'=>$name]);
-    // we should only find 1 player from this
-    if(count($data)==1) {
+
+//    $db = new Medoo($cleardb_config);
+//    $data = $db->select('users', ['username'], ['username'=>$name]);
+//    // we should only find 1 player from this
+//    if(count($data)==1) {
+//        $user_id = $id;
+//        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
+
+    $db = new Medoo(array(
+		'database_type' => 'mysql',
+		'database_name' => getenv('CLEARDB_NAME'),
+		'server' => getenv('CLEARDB_HOST'),
+		'username' => getenv('CLEARDB_USERNAME'),
+		'password' => getenv('CLEARDB_PASSWORD')
+	));
+    $data = $db->get('users', ['username'], ['username'=>$id]);
+    // Check to  make sure the requested user exists at all
+    if(count($data) != null) {
         $user_id = $id;
         require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
+
     }
     else {
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
     }
-
 });
 // games
 $router->map('GET|POST', '/game/[a:game]', function($game) {
