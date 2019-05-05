@@ -7,17 +7,14 @@ function activeUser() {
 	if(!isset($_SESSION['email'])) {
 		return false;
 	}
+
+	// setup to check the email in the database
 	$email = $_SESSION['email'];
 	$db = new Medoo($cleardb_config);
 
 	// Check if the email exists in the records
-	$result = $db->select('users', 'email', ['email'=>$email]);
-	if(count($result) == 1) {
-		return true;
-	}
-	// if the result is anything but 1 then we should just give back the result
-	return false;
-
+	$result = $db->get('users', ['email'], ['email'=>$email]);
+	return $result == null;
 }
 function defaultNav($activePage='') {
 	switch ($activePage) {
