@@ -16,7 +16,7 @@ $router->map('GET', '/about', function() {
 	require __DIR__ . '/pages/html/about.php';
 });
 
-$router->map('POST', '/schedule', function() {
+$router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
 
@@ -26,7 +26,12 @@ $router->map('GET|POST', '/signup', function() {
 	require __DIR__ . '/pages/html/signup.php';
 });
 $router->map('POST|GET', '/login', function() {
-	require __DIR__ . '/pages/html/login.html';
+	if(empty($_POST)) {
+		require __DIR__ . '/pages/html/login.php';
+	}
+	else {
+		require __DIR__ . '/server/login.php';
+	}
 });
 $router->map('GET', '/logout', function() {
 	require __DIR__ . '/pages/html/logout.php';

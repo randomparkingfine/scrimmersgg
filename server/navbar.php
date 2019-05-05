@@ -21,18 +21,18 @@ function activeUser() {
 }
 function defaultNav($activePage='') {
 	switch ($activePage) {
-	case 'login':
-		echo '<li class="active"><a href="/login">Login</a></li>';
-		echo '<li><a href="/signup">Signup</a></li>';
-		break;
-	case 'signup':
-		echo '<li><a href="/login">Login</a></li>';
-		echo '<li class="active"><a href="/signup">Signup</a></li>';
-		break;
-	default:
-		echo '<li><a href="/login">Login</a></li>';
-		echo '<li><a href="/signup">Signup</a></li>';
-		break;
+		case 'login':
+			echo '<li class="active"><a href="/login">Login</a></li>';
+			echo '<li><a href="/signup">Signup</a></li>';
+			break;
+		case 'signup':
+			echo '<li><a href="/login">Login</a></li>';
+			echo '<li class="active"><a href="/signup">Signup</a></li>';
+			break;
+		default:
+			echo '<li><a href="/login">Login</a></li>';
+			echo '<li><a href="/signup">Signup</a></li>';
+			break;
 	}
 }
 

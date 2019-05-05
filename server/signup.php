@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-require 'db.php';
+require __DIR__ . '/db.php';
 require 'validate.php';
 use Medoo\Medoo;
 		session_start();
