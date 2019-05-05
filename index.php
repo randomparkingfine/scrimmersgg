@@ -16,7 +16,7 @@ $router->map('GET', '/about', function() {
 	require __DIR__ . '/pages/html/about.php';
 });
 
-$router->map('POST', '/schedule', function() {
+$router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
 
