@@ -23,7 +23,12 @@ $router->map('GET|POST', '/schedule', function() {
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
-	require __DIR__ . '/pages/html/signup.php';
+	if(empty($_POST)) {
+		require __DIR__ . '/pages/html/signup.php';
+	}
+	else {
+		require __DIR__ . '/server/signup.php';
+	}
 });
 $router->map('POST|GET', '/login', function() {
 	if(empty($_POST)) {
