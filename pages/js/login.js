@@ -6,7 +6,7 @@ $('#submit').click(function () {
 			password: $('#password').val()
 		},
 		function(data) {
-			$('#response').html(data);
+			$('#response').text(data);
 		}
 	);
 });

@@ -1,10 +1,6 @@
 <?php
 require 'server/db.php';
-<<<<<<< HEAD
-require 'AltoRouter.php'; // vendor/altorouter/altorouter/
-=======
 require 'AltoRouter.php';//vendor/altorouter/altorouter/
->>>>>>> 92c463e9030df7d7803fda70d8d2114d53145eeb
 use Medoo\Medoo;
 
 
@@ -26,7 +22,12 @@ $router->map('GET', '/signup', function() {
 	require __DIR__ . '/pages/html/signup.php';
 });
 $router->map('POST|GET', '/login', function() {
-	require __DIR__ . '/pages/html/login.html';
+	if(empty($_POST)) {
+		require __DIR__ . '/pages/html/login.php';
+	}
+	else {
+		require __DIR__ . '/server/login.php';
+	}
 });
 $router->map('GET', '/logout', function() {
 	require __DIR__ . '/pages/html/logout.php';
