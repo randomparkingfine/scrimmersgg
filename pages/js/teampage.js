@@ -14,7 +14,7 @@ $('#submit-filters').click(function() {
                                       
                                        for( var item in data){
                                        var rest = data[item]['team_bio'].slice(0, 70);
-                                       $("#filteredTeams").append('<tr><td>' + data[item]['team_name'] + '</td><td>'  + data[item]['captain'] + '</td><td>' + rest + '...' + '</td></tr>');
+                                       $("#filteredTeams").append('<tr><td>' +'<a href=/user/' + data[item]['captain'] + '>' + data[item]['team_name'] +'</a>' + '</td><td>'  + data[item]['captain'] + '</td><td>' + rest + '...' + '</td></tr>');
                                        }
                                   },
                                   
