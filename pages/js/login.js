@@ -6,7 +6,12 @@ $('#submit').click(function () {
 			password: $('#password').val()
 		},
 		function(data) {
-			$('#response').text(data);
+			$('#response').html(data);
+			if(data == 'success') {
+				// now we can redirect the user to the homepage
+				// session should now be started and they will be logged in
+				window.location.replace("/");
+			}
 		}
 	);
 });

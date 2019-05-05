@@ -17,7 +17,7 @@ use Medoo\Medoo;
 //            'salt' => generateBase62String(22),
         ];
 
-		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
+		$hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);//, PASSWORD_BCRYPT, $options);
 		
 		$db->insert('users',[
 			"username" => $_POST["username"],
