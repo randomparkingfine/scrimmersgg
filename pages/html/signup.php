@@ -42,7 +42,7 @@
                             <input type="text" name="name" id="name" />
                         </div>
                         <div class="field">
-                            <label for="email">Email</label>
+                            <label for="email" id="emailLabel">Email</label>
                             <input type="text" name="email" id="email" />
                         </div>
                         <div class="field">

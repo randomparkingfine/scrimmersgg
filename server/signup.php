@@ -4,8 +4,7 @@ require __DIR__ . '/db.php';
 require __DIR__ . '/validate.php';
 use Medoo\Medoo;
 		session_start();
-		if($status['email'] === "Invalid" || $status['username'] === "Invalid"){
-			$status['check'] = 'taken';
+		if($status['email'] == "Invalid" || $status['username'] == "Invalid"){
 			echo json_encode($status);
 			exit;
 		}
@@ -19,11 +18,6 @@ use Medoo\Medoo;
         ];
 
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
-		
-		$test["username"] = $_POST["username"];
-		$test["password"] = $hashedPassword;
-		$test["email"] = $hashedEmail;
-//		echo json_encode($test);
 		
 		$db->insert('users',[
 			"username" => $_POST["username"],

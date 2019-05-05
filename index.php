@@ -16,7 +16,7 @@ $router->map('GET', '/about', function() {
 	require __DIR__ . '/pages/html/about.php';
 });
 
-$router->map('POST', '/schedule', function() {
+$router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
 
@@ -60,7 +60,7 @@ $router->map('GET', '/user/[a:id]', function($id) {
 
 });
 // games
-$router->map('GET', '/game/[a:game]', function($game) {
+$router->map('GET|POST', '/game/[a:game]', function($game) {
 	$games = array(
 		'qc'=>'Quake Champions', 
 		'csgo'=>'Counter-Strike: Global Offensive',
