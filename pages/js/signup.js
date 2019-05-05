@@ -1,4 +1,5 @@
 $('#submit-button').click(function() {
+//    console.log("work");
     var f = false;
     $('#main-form *').filter(':input').each(function() {
         if(this.type == "text" && !this.value.length) {
@@ -17,7 +18,7 @@ $('#submit-button').click(function() {
     }
     if(f){return;}
     $.post(
-        "/server/signup.php",
+        "/signup",
         {
             username:$('#name').val(),
             email:$('#email').val(),
@@ -25,9 +26,13 @@ $('#submit-button').click(function() {
         },
         function(data) {
             console.log(data);
-            if(data["check"] == "taken"){
+            if(data["username"] == "Invalid"){
                 $('#nameLabel').text('Username - Taken');
                 $('#nameLabel').css('color', 'darkred');
+            } 
+            if(data["email"] == "Invalid"){
+                $('#emailLabel').text('Email - Taken');
+                $('#emailLabel').css('color', 'darkred');
             }
         },"json"
     ); 

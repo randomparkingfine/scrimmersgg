@@ -24,35 +24,22 @@
             <section class="post">
                 <form method="post">
                     <select name="region" id="select-region">
-                        <option value="none">Select Region</option>
-                        <option value="na">North America</option>
-                        <option value="sa">South America</option>
-                        <option value="eu">Europe</option>
+                        <option value="none">PLEASE SELECT REGION</option>
+                        <option value="North America">North America</option>
+                        <option value="South America">South America</option>
+                        <option value="Europe">Europe</option>
                     </select>
                     <input id="submit-filters" type="button" value="Set change" class="primary"/>
                 </form>
             </section>
             <section>
                 <div class="table-wrapper">
-                    <table>
+                    <table id = "filteredTeams">
                         <thead>
-                            <th>Team</th>
-                            <th>Schedule</th>
-                            <th>Looking for</th>
+                            <th>Team Name</th>
+                            <th>Captain</th>
+                            <th>Team Bio</th>
                         </thead>
-                    <?php
-                    // Example ussage of new library
-                    require __DIR__ . '/../vendor/autoload.php';
-                    require 'db.php';
-                    use Medoo\Medoo;
-                        
-                    $db = new Medoo($cleardb_config);
-
-                    $data = $db->select('teams', ['captain', 'game','team_name']);
-                    foreach($data as $item) {
-                        echo '<tr><td>' . $item['captain'] . '</td><td>'  . $item['game'] . '</td><td>' . $item['team_name'] . '</td></tr>';
-                    }
-                    ?>
                     </table>
                 </div>
             </section>
@@ -65,7 +52,8 @@
         <script src="/assets/js/breakpoints.min.js"></script>
         <script src="/assets/js/util.js"></script>
         <script src="/assets/js/main.js"></script>
-    </body>                        
+        <script src = "/pages/js/teampage.js"></script>
+    </body>
     <div>Icons made by <a href="https://www.flaticon.com/<?=_('authors').'/'?>freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-require 'db.php';
+require __DIR__ . '/db.php';
 use Medoo\Medoo;
 session_start();
 
@@ -15,10 +15,14 @@ session_start();
         $status['email'] = "Invalid";
 
     }
+    if($data[0]['email'] == $_POST["email"]){
+        $status['email'] = "Invalid";
+    }
     
-    if($data[0] >1){
+    if($data[0]['username'] == $_POST["username"]){
         $status['username'] = "Invalid";
     }
+//    echo json_encode($status);
     
 
     

@@ -26,7 +26,6 @@
 						defaultNav('login');
 					}
 					?>
-                    <li><a href="/signup">Signup</a></li>
                 </ul>
                 <ul class="icons">
                     <li><a href="https://github.com/smolltucc/scrimmersgg" class="icon fa-github"><span class="label">Github</span></a></li>
@@ -49,7 +48,7 @@
 						</div>
 					</div>
 				</form>
-				<p id="reponse"></p>
+				<p id="response"></p>
 			</div>
 		</div>
         <!-- Scripts -->
