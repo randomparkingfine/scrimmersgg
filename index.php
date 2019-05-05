@@ -105,16 +105,6 @@ $router->map('GET|POST', '/game/[a:game]', function($game) {
 	require __DIR__ . '/pages/html/teams.php';
 });
 
-// User request route
-//$router->map('POST', '/server/signup', function() {
-//	// 1. Check if fields are set
-//	// 2. Check if username is unique
-//	// 3. Check if email is valid email
-//	// 4. Create a new entry in database
-//	$fields = $_POST;
-//	require __DIR__ . '/server/validate.php';
-//});
-
 $match=$router->match();
 if(is_array($match) && is_callable($match['target'])){
 	call_user_func_array($match['target'], $match['params']);
