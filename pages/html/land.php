@@ -14,7 +14,7 @@
 				<!-- Intro -->
 					<div id="intro">
 						<h1>Scrimmers.gg</h1>
-						<p>For those on the grind looking for scrims</p>
+						<p>"Werks on my machine" - everyone 2k19 GOTY Edition</p>
 						<ul class="actions">
 							<li><a href="#main" class="button icon solo fa-arrow-down scrolly">Find teams</a></li>
 						</ul>
