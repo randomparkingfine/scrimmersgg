@@ -14,18 +14,16 @@ if($user === null) {
 	echo "<p style=\"color:red;\">Username not found!</p>";
 }
 else {
-	// check if teh password matches
-	echo $_POST['password'] .'======='. $user['password'].'======';
 	if(password_verify($_POST['password'], $user['password'])) {
 		echo "<p style=\"color:red;\">Bad password</p>";
 	}
 	else {
-		echo 'uwu';
+		echo 'success';
+		// create a new session for the browser
+		/*
+		session_start();
+		$_SESSION['email'] = $user['email'];
+		 */
 	}
-	// create a new session for the browser
-	/*
-	session_start();
-	$_SESSION['email'] = $user['email'];
-	 */
 }
 ?>
