@@ -1,6 +1,8 @@
 <?php
+
 require __DIR__ .  '/server/db.php';
 require 'AltoRouter.php'; // vendor/altorouter/altorouter/
+
 require __DIR__ . '/vendor/autoload.php';
 
 
@@ -65,7 +67,6 @@ $router->map('POST', '/dbTeams.php', function() {
 $router->map('GET', '/user/[a:id]', function($name) {
     // check to make sure the requested user even exists
 
-
 //    $db = new Medoo($cleardb_config);
 //    $data = $db->select('users', ['username'], ['username'=>$name]);
 //    // we should only find 1 player from this
@@ -73,18 +74,19 @@ $router->map('GET', '/user/[a:id]', function($name) {
 //        $user_id = $id;
 //        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
 
-    $db = new Medoo(array(
+    $somethingelse = new Medoo(array(
 		'database_type' => 'mysql',
 		'database_name' => getenv('CLEARDB_NAME'),
 		'server' => getenv('CLEARDB_HOST'),
 		'username' => getenv('CLEARDB_USERNAME'),
 		'password' => getenv('CLEARDB_PASSWORD')
 	));
-    $data = $db->get('users', ['username'], ['username'=>$id]);
+	$db = new Medoo($somethingelse);
+    $data = $db->get('users', 'username', ['username'=>$id]);
     // Check to  make sure the requested user exists at all
     if(count($data) != null) {
         $user_id = $id;
-        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
+        require __DIR__ . '/pages/html/userPage.html'; // yfw 404 page 404's
 
     }
     else {
