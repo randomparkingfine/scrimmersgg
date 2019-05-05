@@ -40,7 +40,23 @@
                             <th>Captain</th>
                             <th>Team Bio</th>
                         </thead>
+<<<<<<< HEAD:pages/html/teams.php
 
+=======
+                    <?php
+                    // Example ussage of new library
+                    require __DIR__ . '/../vendor/autoload.php';
+                    require 'db.php';
+                    use Medoo\Medoo;
+                        
+                    $db = new Medoo($cleardb_config);
+
+                    $data = $db->select('teams', ['captain', 'game','team_name']);
+                    foreach($data as $item) {
+                        echo '<tr><td>' . $item['captain'] . '</td><td>'  . $item['game'] . '</td><td>' . $item['team_name'] . '</td></tr>';
+                    }
+                    ?>
+>>>>>>> 62e8fc76ac683d507e4173397a9689f29428c80d:server/teams.php
                     </table>
                 </div>
             </section>

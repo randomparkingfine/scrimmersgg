@@ -1,4 +1,5 @@
 $('#submit-button').click(function() {
+//    console.log("work");
     var f = false;
     $('#main-form *').filter(':input').each(function() {
         if(this.type == "text" && !this.value.length) {
@@ -24,10 +25,15 @@ $('#submit-button').click(function() {
             password:$('#password').val(),
         },
         function(data) {
-            if(data == "taken"){
-                $('#nameLabel').text('Username - Take');
-                $('#nameLabel').attr('color', 'red');
+            console.log(data);
+            if(data["username"] == "Invalid"){
+                $('#nameLabel').text('Username - Taken');
+                $('#nameLabel').css('color', 'darkred');
+            } 
+            if(data["email"] == "Invalid"){
+                $('#emailLabel').text('Email - Taken');
+                $('#emailLabel').css('color', 'darkred');
             }
-        }
-    );
+        },"json"
+    ); 
 });

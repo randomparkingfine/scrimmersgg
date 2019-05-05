@@ -1,31 +1,28 @@
 <?php
-	function signUp($email = "",$password = "",$username = "") {
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/db.php';
+require __DIR__ . '/validate.php';
+use Medoo\Medoo;
 		session_start();
-		$conn = getDBConnection();
-		$parameters = array();
-
-		$parameters[":username"]= $_POST["username"];
+		if($status['email'] == "Invalid" || $status['username'] == "Invalid"){
+			echo json_encode($status);
+			exit;
+		}
+		
+//		echo json_encode($data);
+		$db = new Medoo($cleardb_config);
 		
 		$options = [
 			'cost' => 12,
-            'salt' => mcrypt_create_iv(22, MCRYPT_DEV_URANDOM),
-            'salt' => generateBase62String(22),
+//            'salt' => generateBase62String(22),
         ];
-        
-        $hashedEmail = password_hash($_POST['email'], PASSWORD_BCRYPT,$options);
-        $parameters[":email"] = $hashedEmail;
 
 		$hashedPassword = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
-		$parameters[":password"]= $hashedPassword;
+		
+		$db->insert('users',[
+			"username" => $_POST["username"],
+			"email" => $_POST["email"],
+			"password" => $hashedPassword
+		]);
 
-
-		$sql = "INSERT INTO user(email, username,password) VALUES (:email, :username, :password)";
-
-		$stmt = getDBConnection()->prepare($sql);
-		$stmt->execute(array(
-			":email" => $parameters[":email"],
-			":username" => $parameters[":username"],
-			":password" => $parameters[":password"]
-		));
-	}
 ?>
