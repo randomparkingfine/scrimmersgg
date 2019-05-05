@@ -1,5 +1,5 @@
 <?php
-require 'server/db.php';
+require __DIR__ . '/server/db.php';
 require 'AltoRouter.php'; // vendor/altorouter/altorouter/
 use Medoo\Medoo;
 
@@ -23,7 +23,7 @@ $router->map('POST', '/schedule', function() {
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
-	require __DIR__ . '/pages/html/signup.html';
+	require __DIR__ . '/pages/html/signup.php';
 });
 $router->map('POST|GET', '/login', function() {
 	if(empty($_POST)) {

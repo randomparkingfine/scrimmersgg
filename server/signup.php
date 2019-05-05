@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . 'db.php';
-require 'validate.php';
+require __DIR__ . '/db.php';
+require __DIR__ . '/validate.php';
 use Medoo\Medoo;
 		session_start();
 		if($status['email'] === "Invalid" || $status['username'] === "Invalid"){
