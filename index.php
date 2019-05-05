@@ -1,10 +1,15 @@
 <?php
-require 'AltoRouter.php';
+
+require __DIR__ .  '/server/db.php';
+require 'AltoRouter.php'; // vendor/altorouter/altorouter/
+
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/server/db.php';
+
+
 use Medoo\Medoo;
     
 session_start();
+
 
 $router = new AltoRouter();
 
@@ -59,16 +64,16 @@ $router->map('POST', '/dbTeams.php', function() {
 
     
 // User pages
-$router->map('GET', '/user/[a:id]', function($id) {
+$router->map('GET', '/user/[a:id]', function($name) {
     // check to make sure the requested user even exists
-//$somethingelse = array(
-//		'database_type' => 'mysql',
-//		'database_name' => "heroku_4f58a1b681d6fa5",//getenv('CLEARDB_NAME'),
-//		'server' => "us-cdbr-iron-east-02.cleardb.net",//getenv('CLEARDB_HOST'),
-//		'password' => "16f9125243321f4",//getenv('CLEARDB_USERNAME'),
-//		'username' => "b076f7bfe24b18"//getenv('CLEARDB_PASSWORD')
-//);
-//$somethingelse = new Medoo($cleardb_config);
+
+//    $db = new Medoo($cleardb_config);
+//    $data = $db->select('users', ['username'], ['username'=>$name]);
+//    // we should only find 1 player from this
+//    if(count($data)==1) {
+//        $user_id = $id;
+//        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
+
     $somethingelse = new Medoo(array(
 		'database_type' => 'mysql',
 		'database_name' => getenv('CLEARDB_NAME'),
@@ -82,6 +87,7 @@ $router->map('GET', '/user/[a:id]', function($id) {
     if(count($data) != null) {
         $user_id = $id;
         require __DIR__ . '/pages/html/userPage.html'; // yfw 404 page 404's
+
     }
     else {
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
@@ -91,7 +97,7 @@ $router->map('GET', '/user/[a:id]', function($id) {
 $router->map('GET|POST', '/game/[a:game]', function($game) {
 	$games = array(
 		'qc'=>'Quake Champions', 
-		'csgo'=>'Counter-Strike: Global Offensive',
+		'csgo'=>'CS:GO',
 		'apex'=>'Apex Legends'
 	);
 	if(!isset($_GET['game'])) {
