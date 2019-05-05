@@ -17,7 +17,7 @@ $('#submit-button').click(function() {
     }
     if(f){return;}
     $.post(
-        "/server/signup",
+        "/server/signup.php",
         {
             username:$('#name').val(),
             email:$('#email').val(),
@@ -25,10 +25,10 @@ $('#submit-button').click(function() {
         },
         function(data) {
             console.log(data);
-            if(data == "taken"){
-                $('#nameLabel').text('Username - Take');
-                $('#nameLabel').attr('color', 'red');
+            if(data["check"] == "taken"){
+                $('#nameLabel').text('Username - Taken');
+                $('#nameLabel').css('color', 'darkred');
             }
-        }
+        },"json"
     ); 
 });

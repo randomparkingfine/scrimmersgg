@@ -27,7 +27,6 @@
 						defaultNav('signup');
 					}
 					?>
-                    <li><a href="/signup">Signup</a></li>
                 </ul>
                 <ul class="icons">
                     <li><a href="https://github.com/smolltucc/scrimmersgg" class="icon fa-github"><span class="label">Github</span></a></li>
@@ -36,7 +35,7 @@
             <!-- Main -->
             <div id="main">
                 <!-- Form elements -->
-                <form id="main-form" method="post" action="#">
+                <form id="main-form">
                     <div class="fields">
                         <div class="field">
                             <label for="name" id="nameLabel">Username</label>
