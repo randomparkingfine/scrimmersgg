@@ -88,7 +88,7 @@ $router->map('GET', '/user/[a:id]', function($id) {
 $router->map('GET|POST', '/game/[a:game]', function($game) {
 	$games = array(
 		'qc'=>'Quake Champions', 
-		'csgo'=>'Counter-Strike: Global Offensive',
+		'csgo'=>'CS:GO',
 		'apex'=>'Apex Legends'
 	);
 	if(!isset($_GET['game'])) {
