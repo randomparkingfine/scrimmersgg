@@ -64,7 +64,7 @@ $router->map('POST', '/dbTeams.php', function() {
 
     
 // User pages
-$router->map('GET', '/user/[a:id]', function($name) {
+$router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
 
 //    $db = new Medoo($cleardb_config);
@@ -82,11 +82,11 @@ $router->map('GET', '/user/[a:id]', function($name) {
 		'password' => getenv('CLEARDB_PASSWORD')
 	));
 	$db = new Medoo($somethingelse);
-    $data = $db->get('users', 'username', ['username'=>$id]);
+    $data = $db->get('users', 'username', ['username[=]'=>$id]);
     // Check to  make sure the requested user exists at all
     if(count($data) != null) {
         $user_id = $id;
-        require __DIR__ . '/pages/html/userPage.html'; // yfw 404 page 404's
+        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
 
     }
     else {
@@ -100,6 +100,9 @@ $router->map('GET|POST', '/game/[a:game]', function($game) {
 		'csgo'=>'CS:GO',
 		'apex'=>'Apex Legends'
 	);
+	if(!empty($_POST)){
+		require __DIR__ . "/dbTeams.php";
+	}
 	if(!isset($_GET['game'])) {
 		$_GET['game'] = $games[$game];
         $_SESSION['game'] = $games[$game];
