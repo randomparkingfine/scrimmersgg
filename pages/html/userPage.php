@@ -7,6 +7,13 @@
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<link rel="icon" href="/images/favicon.gif" types="image/gif" >
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script
+		src="http://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+    	<script src="../../calendar/index.js"></script>
+    	<link rel="stylesheet" href="../../calendar/style_view.css">
+		
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
@@ -79,12 +86,128 @@
 				<section id="user-schedule" class="post">
 					<header>
 						<h2>Available Times</h2>
+						<div id="scheduleUser">
+							<div id='cal'>
+								<h5>
+									<div id="day-schedule">
+									</div>
+								</h5>
+							</div>
+						</div>
 					</header>
 				</section>
 			</div>
 			
 		</div>
-		
+		<script>
+			var str = "";
+			var arr = [];
+			var timeArr = [];
+			var scheduleObj = {};
+			
+			(function ($) {
+				console.log("here")
+				$.ajax({
+					type: "GET",
+					url: "/scheduleView",
+					dataType: "text",
+					success: function(data, status) {
+						console.log("Get schedule -> done");
+						str = JSON.parse(data);
+						for (var i = 0; i < str.length; i++)
+						{
+							arr.push(str[i].user_schedule);
+						}
+						for (var i = 0; i < arr.length; i++)
+						{
+							timeArr.push(arr[i]);
+							
+						}
+						
+						var scheduleJson = JSON.parse(timeArr)
+						getSchedule(scheduleJson);
+						$("#day-schedule").data('artsy.dayScheduleSelector').deserialize(scheduleObj);
+					},
+					error: function(){
+					}            
+				});
+				$("#day-schedule").dayScheduleSelector({
+					days: [0, 1, 2, 3, 4, 5, 6],
+					interval: 60,
+					startTime: '00:00',
+					endTime: '23:59',
+					stringDays  : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+					disableDays: [0, 6]
+				});
+				
+				
+				function getSchedule(schedule)
+				{   
+					
+					var dayTime = [];
+					var canInsert = false;
+					for (var i = 0; i < schedule.length; i++) 
+					{
+					if (day !== schedule[i][0].day) {
+						var dayTime = [];
+					}
+					var timeOfDay = [];              
+					var hour = 0;
+					var day = "";
+					var j = 0;
+					var next = 0;
+					while (schedule[i][j] !== undefined)
+					{
+						day = schedule[i][j].day;      
+						next = j + 1;
+						if (schedule[i][next] !== undefined && schedule[i][next].day !== day)
+						{
+						canInsert = true;
+						}
+						if (j === 0)
+						{
+						var time = schedule[i][j].time;
+						timeOfDay.push(time);
+						if (schedule[i][next] === undefined) {
+							canInsert = true;
+							var time = parseInt(schedule[i][j].time);
+							if (time < 10) {
+							var realTime = "0"+(time+1) + ":00";
+							}
+							else {
+							var realTime = time + ":59";
+							}
+							timeOfDay.push(realTime);
+							dayTime.push(timeOfDay);
+						}
+						}
+						else 
+						{
+						if (schedule[i][next] === undefined)
+						{
+							canInsert = true;
+							var time = parseInt(schedule[i][j].time);
+							if (time < 10) {
+							var realTime = "0"+(time+1) + ":00";
+							}
+							else {
+							var realTime = time + ":59";
+							}
+							timeOfDay.push(realTime);
+							dayTime.push(timeOfDay);
+						} 
+						} 
+						j++;
+					}
+					if (canInsert)
+					{
+						scheduleObj[day] = dayTime;
+						canInsert = false;
+					}
+					}
+				}
+			})($);
+ 		</script>
 
 		<footer id="footer">
 			<?php
