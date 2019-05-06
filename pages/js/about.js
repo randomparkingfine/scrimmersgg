@@ -5,6 +5,7 @@ $('#submit').click(function() {
 		{message: $('#message').val()},
 		function(data) {
 			$('#response').text(data);
+			$('#submit').prop('disabled',true);
 		}
 	);
 });
