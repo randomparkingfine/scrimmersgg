@@ -9,6 +9,7 @@ use Medoo\Medoo;
     
 session_start();
 
+
 $router = new AltoRouter();
 
 // Base level pages
@@ -31,9 +32,6 @@ $router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
 
-$router->map('GET|POST', '/scheduleView', function() {
-	require __DIR__ . '/server/getSchedule.php';
-});
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
@@ -73,14 +71,22 @@ $router->map('POST', '/dbTeams.php', function() {
     
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
-    $db = new Medoo(array(
+//    $db = new Medoo(array(
+//
+//		'database_type' => 'mysql',
+//		'database_name' => getenv('CLEARDB_NAME'),
+//		'server' => getenv('CLEARDB_HOST'),
+//		'username' => getenv('CLEARDB_USERNAME'),
+//		'password' => getenv('CLEARDB_PASSWORD')
+//	));
+	$db = new Medoo(array(
 
-		'database_type' => 'mysql',
-		'database_name' => getenv('CLEARDB_NAME'),
-		'server' => getenv('CLEARDB_HOST'),
-		'username' => getenv('CLEARDB_USERNAME'),
-		'password' => getenv('CLEARDB_PASSWORD')
-	));
+			'database_type' => 'mysql',
+			'database_name' => 'heroku_4f58a1b681d6fa5',//getenv('CLEARDB_NAME'),
+			'server' => 'us-cdbr-iron-east-02.cleardb.net',//getenv('CLEARDB_HOST'),
+			'username' => 'b076f7bfe24b18',//getenv('CLEARDB_USERNAME'),
+			'password' => '16f9125243321f4'//getenv('CLEARDB_PASSWORD')
+		));
     $user_data = $db->get(
 		'users', 
 		['username', 'user_bio', 'user_games', 'user_links', 'user_schedule'], 
@@ -88,7 +94,7 @@ $router->map('GET', '/user/[a:id]', function($id) {
 	);
 
 	if($user_data == null) {
-		var_dump($id);
+//		var_dump($id);
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
 	}
     else {
