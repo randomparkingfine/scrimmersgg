@@ -62,7 +62,7 @@ $router->map('POST', '/dbTeams.php', function() {
 
     
 // User pages
-$router->map('GET', '/user/[a:id]', function($name) {
+$router->map('GET', '/user/[a:id]', function($id) {
     // check to make sure the requested user even exists
 
 

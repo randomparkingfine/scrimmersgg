@@ -40,10 +40,6 @@
                             <th>Captain</th>
                             <th>Team Bio</th>
                         </thead>
-<<<<<<< HEAD
-
-=======
->>>>>>> de4edecd84b1d4b9ef96e70661ec75731916869a
                     </table>
                 </div>
             </section>
