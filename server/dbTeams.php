@@ -7,14 +7,13 @@
     session_destroy();
    
 //    $db = new Medoo($cleardb_config);
-    $somethingelse = new Medoo(array(
+    $db = new Medoo(array(
         'database_type' => 'mysql',
         'database_name' => getenv('CLEARDB_NAME'),
         'server' => getenv('CLEARDB_HOST'),
         'username' => getenv('CLEARDB_USERNAME'),
         'password' => getenv('CLEARDB_PASSWORD')
     ));
-    $db = new Medoo($somethingelse);
     
     $data = $db->select('teams', ["captain","team_name", "team_bio", "region"],["region[=]"=>$_POST["regions"], "game[=]"=>$temp]);
 
