@@ -4,7 +4,7 @@ require __DIR__ . '/db.php';
 use Medoo\Medoo;
 
 function activeUser() {
-	if(!isset($_SESSION['email'])) {
+	if(!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
 		return false;
 	}
 

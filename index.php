@@ -9,8 +9,6 @@ use Medoo\Medoo;
     
 session_start();
 
-//var_dump($_SESSION);
-
 $router = new AltoRouter();
 
 // Base level pages
@@ -34,6 +32,9 @@ $router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
 
+$router->map('GET|POST', '/scheduleView', function() {
+	require __DIR__ . '/server/getSchedule.php';
+});
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
@@ -85,6 +86,7 @@ $router->map('POST', '/dbTeams.php', function() {
 $router->map('GET', '/user/[a:id]', function($id) {
 
     $db = new Medoo(array(
+
 		'database_type' => 'mysql',
 		'database_name' => getenv('CLEARDB_NAME'),
 		'server' => getenv('CLEARDB_HOST'),
@@ -102,6 +104,10 @@ $router->map('GET', '/user/[a:id]', function($id) {
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
 	}
     else {
+
+		$temp = $db->select('users', "email",["username[=]"=>$id]);
+		$_SESSION['atemail'] = $temp[0];
+		$_SESSION['atPage'] = $id;
         require __DIR__ . '/pages/html/userPage.php';
     }
 });
@@ -112,6 +118,9 @@ $router->map('GET|POST', '/game/[a:game]', function($game) {
 		'csgo'=>'CS:GO',
 		'apex'=>'Apex Legends'
 	);
+	if(!empty($_POST)){
+		require __DIR__ . "/dbTeams.php";
+	}
 	if(!isset($_GET['game'])) {
 		$_GET['game'] = $games[$game];
         $_SESSION['game'] = $games[$game];

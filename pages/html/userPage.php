@@ -1,17 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title></title>
+		<title><?php echo $user_data['username'];?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
+		<link rel="icon" href="/images/favicon.gif" types="image/gif" >
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
 		
 			<header id="header">
-				<a href="index.html" class="logo">User Page</a>
+				<?php
+				echo '<a href="/user/'.$user_data['username'].'" class="logo">' . $user_data['username'] . '</a>';
+				?>
 			</header>
 			
 			<!-- Navbar -->
@@ -82,19 +85,24 @@
 			
 		</div>
 		
+
 		<footer id="footer">
+			<?php
+			// Attempt to only ever show the message box if the user is logged in
+			if(!activeUser()) {
+				echo '<h2>Login to send ' . $user_data['username'] . 'a message</h2>';
+				exit;
+			}
+			?>
 			<section>
-				<form method="post" action="#">
+				<form>
 					<div class="fields">
 						<div class="field">
-							<h2 id="response">Send you're message here</h2>
 							<label for="message">Message</label>
 							<textarea name="message" id="message" rows="3"></textarea>
 						</div>
 					</div>
-					<ul class="actions">
-						<li><input type="submit" value="Send Message" /></li>
-					</ul>
+					<input id="submit" type="button" value="Send Message" />
 				</form>
 			</section>
 		</footer>
@@ -106,6 +114,7 @@
 		<script src="/assets/js/breakpoints.min.js"></script>
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
+		<script src="/pages/js/userPage.js"></script>
 	</body>                        
 </html>
 
