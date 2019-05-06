@@ -9,8 +9,6 @@ use Medoo\Medoo;
     
 session_start();
 
-var_dump($_SESSION);
-
 $router = new AltoRouter();
 
 // Base level pages
