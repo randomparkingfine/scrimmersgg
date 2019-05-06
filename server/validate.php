@@ -2,7 +2,6 @@
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/db.php';
 use Medoo\Medoo;
-session_start();
 
     $status = array();
     $status['email'] = "Valid";
