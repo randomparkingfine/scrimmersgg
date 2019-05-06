@@ -84,17 +84,14 @@
 		
 		<footer id="footer">
 			<section>
-				<form method="post" action="#">
+				<form>
 					<div class="fields">
 						<div class="field">
-							<h2 id="response">Send you're message here</h2>
 							<label for="message">Message</label>
 							<textarea name="message" id="message" rows="3"></textarea>
 						</div>
 					</div>
-					<ul class="actions">
-						<li><input type="submit" id ="msg" value="Send Message" /></li>
-					</ul>
+					<input id="submit" type="button" value="Send Message" />
 				</form>
 			</section>
 		</footer>
@@ -106,6 +103,7 @@
 		<script src="/assets/js/breakpoints.min.js"></script>
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
+		<script src="/pages/js/userPage.js"></script>
 	</body>                        
 </html>
 
