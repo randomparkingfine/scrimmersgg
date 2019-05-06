@@ -12,6 +12,7 @@ use Medoo\Medoo;
 	
 //	echo json_encode($data[0]);
 //	echo json_encode($_SESSION);
+	
 
 $address = $_SESSION['email'];
 
