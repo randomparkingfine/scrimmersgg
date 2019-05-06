@@ -1,9 +1,3 @@
-<?php
-// Getting the relevant user info from the uri
-require __DIR__ . '/../../vendor/autoload.php';
-//require __DIR__ . '/../../userMail.php';	// this does nothing yet but will in the coming days
-use Medoo\Medoo;
-?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -48,11 +42,34 @@ use Medoo\Medoo;
 					<div class = "row">
 						<div class ="col-6 col-12-small">
 							<h2>Bio</h2>
+							<?php 
+							if($user_data['user_bio'] != null) {
+								echo htmlspecialchars($user_data['user_bio']);
+							}
+							else {
+								echo '<p>User has no bio</p>';
+							}
+							?>
 							<h2>Links</h2>
+							<?php 
+							if($user_data['user_links']) {
+								echo htmlspecialchars($user_data['user_links']);
+							}
+							else {
+								echo '<p>No links here ;O;</p>';
+							}
+							?>
 						</div>
 						<div class ="col-6 col-12-small">
 							<h2>Games</h2>
-							<h2>Team</h2>
+							<?php 
+							if($user_data['user_games'] != null) {
+								echo htmlspecialchars($user_data['user_games']);
+							}
+							else {
+								echo '<p>No games found here ;-;</p>';
+							}
+							?>
 						</div>
 					</div>
 				</section>
@@ -82,13 +99,13 @@ use Medoo\Medoo;
 			</section>
 		</footer>
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/jquery.scrollex.min.js"></script>
+		<script src="/assets/js/jquery.scrolly.min.js"></script>
+		<script src="/assets/js/browser.min.js"></script>
+		<script src="/assets/js/breakpoints.min.js"></script>
+		<script src="/assets/js/util.js"></script>
+		<script src="/assets/js/main.js"></script>
 	</body>                        
 </html>
 
