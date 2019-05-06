@@ -24,7 +24,7 @@ else {
 
 	}
 	else {
-		echo 'success';
+		echo '<p style="color:green;">success</p>';
 		// index exposes sessions for us already
 		$_SESSION['email'] = $user['email'];
 		$_SESSION['username'] = $user['username'];
