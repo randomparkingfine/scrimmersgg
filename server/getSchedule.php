@@ -4,9 +4,9 @@
     use Medoo\Medoo;
     session_start();
     $db = new Medoo($cleardb_config);
-    //$email = $_SESSION['email'];   
+    $email = $_SESSION['email'];   
     //$email = 'zelmhirst19@army.mil';
-    $email = 'rmacfarlanea@opensource.org'; 
+    //$email = 'rmacfarlanea@opensource.org'; 
     //$email = 'ppallentv@ask.com';
     $datas=$db->select('users',[
         'user_schedule'
