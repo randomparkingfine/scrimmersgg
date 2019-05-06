@@ -9,7 +9,7 @@
     
     
     //["region[=]"=>$_POST["regions"]
-    $data = $db->select('users', "*",["username[=]"=>$_POST['usernames']]);
+    $data = $db->select('users', "*",["username[~]"=>$_POST['usernames']]);
     
     echo json_encode($data);
     

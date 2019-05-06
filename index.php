@@ -9,8 +9,6 @@ use Medoo\Medoo;
     
 session_start();
 
-var_dump($_SESSION);
-
 $router = new AltoRouter();
 
 // Base level pages
@@ -33,6 +31,9 @@ $router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
 
+$router->map('GET|POST', '/scheduleView', function() {
+	require __DIR__ . '/server/getSchedule.php';
+});
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
