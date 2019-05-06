@@ -60,25 +60,15 @@
 				<!-- Footer -->
 				<footer id="footer">
 					<section>
-					<h2>Feedback? We'd love that!</h2>
+					<h2 id="response">Feedback? We'd love that!</h2>
 						<form>
 							<div class="fields">
-								<div class="field">
-									<label for="name">Name</label>
-									<input type="text" name="name" id="name" />
-								</div>
-								<div class="field">
-									<label for="email">Email - <em>Leave blank to be annonymous</em></label>
-									<input type="text" name="email" id="email" />
-								</div>
 								<div class="field">
 									<label for="message">Message</label>
 									<textarea name="message" id="message" rows="3"></textarea>
 								</div>
 							</div>
-							<ul class="actions">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
+							<input id="submit" type="button" value="Send Message" />
 						</form>
 					</section>
 				</footer>
@@ -90,5 +80,6 @@
 		<script src="/assets/js/breakpoints.min.js"></script>
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
+		<script src="/pages/js/about.js"></script>
 	</body>
 </html>
