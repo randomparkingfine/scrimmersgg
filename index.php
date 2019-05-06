@@ -75,10 +75,10 @@ $router->map('GET', '/user/[a:id]', function($id) {
     $db = new Medoo(array(
 
 		'database_type' => 'mysql',
-		'database_name' => getenv('CLEARDB_NAME'),
-		'server' => getenv('CLEARDB_HOST'),
-		'username' => getenv('CLEARDB_USERNAME'),
-		'password' => getenv('CLEARDB_PASSWORD')
+		'database_name' => 'heroku_4f58a1b681d6fa5',//getenv('CLEARDB_NAME'),
+		'server' => 'us-cdbr-iron-east-02.cleardb.net',//getenv('CLEARDB_HOST'),
+		'username' => 'b076f7bfe24b18',//getenv('CLEARDB_USERNAME'),
+		'password' => '16f9125243321f4'//getenv('CLEARDB_PASSWORD')
 	));
     $user_data = $db->get(
 		'users', 
@@ -91,6 +91,7 @@ $router->map('GET', '/user/[a:id]', function($id) {
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
 	}
     else {
+		$_SESSION['atPage'] = $id;
         require __DIR__ . '/pages/html/userPage.php';
     }
 });
