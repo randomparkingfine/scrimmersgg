@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
-require 'db.php';
+require __DIR__ . '/db.php';
 use Medoo\Medoo;
 
 function activeUser() {
@@ -10,7 +10,13 @@ function activeUser() {
 
 	// setup to check the email in the database
 	$email = $_SESSION['email'];
-	$db = new Medoo($cleardb_config);
+	$db = new Medoo(array(
+		'database_type' => 'mysql',
+		'database_name' => getenv('CLEARDB_NAME'),
+		'server' => getenv('CLEARDB_HOST'),
+		'username' => getenv('CLEARDB_USERNAME'),
+		'password' => getenv('CLEARDB_PASSWORD')
+	));
 
 	// Check if the email exists in the records
 	$result = $db->get('users', ['email'], ['email'=>$email]);

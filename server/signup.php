@@ -8,6 +8,9 @@ use Medoo\Medoo;
 			exit;
 		}
 		
+		if( isset($_SESSION['email']) || isset($_SESSION['username']) ) {
+			exit;
+		}
 //		echo json_encode($data);
 		$db = new Medoo($cleardb_config);
 		
@@ -18,6 +21,10 @@ use Medoo\Medoo;
 			"email" => $_POST["email"],
 			"password" => $hashedPassword
 		]);
+
+		// Setup the session vars and respond
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['username'] = $_POST['username'];
 		echo 'success';
 
 ?>
