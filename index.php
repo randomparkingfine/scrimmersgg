@@ -9,7 +9,7 @@ use Medoo\Medoo;
     
 session_start();
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 $router = new AltoRouter();
 
@@ -25,7 +25,8 @@ $router->map('GET|POST', '/about', function() {
 		require __DIR__ . '/server/aboutMail.php';
 	}
 	else {
-		require __DIR__ . '/pages/html/about.php';
+        require __DIR__ . '/pages/html/about.php';
+             
 	}
 });
 
@@ -62,12 +63,22 @@ $router->map('GET|POST', '/team/[a:id]', function($id) {
              require __DIR__ . '/pages/html/teams.php';
 
 });
+    
+$router->map('GET|POST', '/searchPlayer', function() {
+                 // the id is the team owner id
+    require __DIR__ . '/pages/html/playerLookup.php';
+            
+});
+
+$router->map('POST', '/dbPlayers.php', function() {
+    require __DIR__ . '/server/dbPlayers.php';
+});
+
 
 $router->map('POST', '/dbTeams.php', function() {
    require __DIR__ . '/server/dbTeams.php';
 });
-
-
+    
 
     
 // User pages

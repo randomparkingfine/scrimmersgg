@@ -33,6 +33,7 @@ function defaultNav($activePage='') {
 			echo '<li class="active"><a href="/signup">Signup</a></li>';
 			break;
 		default:
+            echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
 			echo '<li><a href="/login">Login</a></li>';
 			echo '<li><a href="/signup">Signup</a></li>';
 			break;
