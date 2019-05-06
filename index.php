@@ -1,11 +1,10 @@
 <?php
 
-require __DIR__ .  '/server/db.php';
-require 'AltoRouter.php'; // vendor/altorouter/altorouter/
-
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/server/db.php';
+//require 'AltoRouter.php'; // vendor/altorouter/altorouter/
 
-
+use SendGrid\Mail;
 use Medoo\Medoo;
     
 session_start();
@@ -17,10 +16,16 @@ $router = new AltoRouter();
 $router->map('GET', '/', function() {
 	require __DIR__ . '/pages/html/land.php';
 });
-// User pages which don't exist yet
 
-$router->map('GET', '/about', function() {
-	require __DIR__ . '/pages/html/about.php';
+// The about page will serve as an example of how to use the sendgrid api from php
+$router->map('GET|POST', '/about', function() {
+	if(isset($_POST['message'])) {
+		// Go off to try and send the email from the user
+		require __DIR__ . '/server/aboutMail.php';
+	}
+	else {
+		require __DIR__ . '/pages/html/about.php';
+	}
 });
 
 $router->map('GET|POST', '/schedule', function() {
