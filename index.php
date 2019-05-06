@@ -69,33 +69,26 @@ $router->map('POST', '/dbTeams.php', function() {
 
     
 // User pages
-$router->map('GET', '/user/[a:id]', function($name) {
-    // check to make sure the requested user even exists
-
-//    $db = new Medoo($cleardb_config);
-//    $data = $db->select('users', ['username'], ['username'=>$name]);
-//    // we should only find 1 player from this
-//    if(count($data)==1) {
-//        $user_id = $id;
-//        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
-
-    $somethingelse = new Medoo(array(
+$router->map('GET', '/user/[a:id]', function($id) {
+    $db = new Medoo(array(
 		'database_type' => 'mysql',
 		'database_name' => getenv('CLEARDB_NAME'),
 		'server' => getenv('CLEARDB_HOST'),
 		'username' => getenv('CLEARDB_USERNAME'),
 		'password' => getenv('CLEARDB_PASSWORD')
 	));
-	$db = new Medoo($somethingelse);
-    $data = $db->get('users', 'username', ['username'=>$id]);
-    // Check to  make sure the requested user exists at all
-    if(count($data) != null) {
-        $user_id = $id;
-        require __DIR__ . '/pages/html/userPage.html'; // yfw 404 page 404's
+    $user_data = $db->get(
+		'users', 
+		['username', 'user_bio', 'user_games', 'user_links', 'user_schedule'], 
+		['username'=>$id]
+	);
 
-    }
-    else {
+	if($user_data == null) {
+		var_dump($id);
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+	}
+    else {
+        require __DIR__ . '/pages/html/userPage.php';
     }
 });
 // games
