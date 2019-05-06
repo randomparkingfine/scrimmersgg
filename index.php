@@ -34,6 +34,10 @@ $router->map('GET|POST', '/schedule', function() {
 $router->map('GET|POST', '/scheduleView', function() {
 	require __DIR__ . '/server/getSchedule.php';
 });
+
+$router->map('GET|POST', '/mySchedule', function() {
+	require __DIR__ . '/pages/html/calendar.php';
+});
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {

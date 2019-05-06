@@ -18,7 +18,11 @@
 
         <!-- Header -->
           <header id="header">
-            <a href="index.html" class="logo">Massively</a>
+            <a href="index.html" class="logo">
+              <?php 
+                echo $_SESSION['username'];
+              ?>
+              </a>
           </header>
 
           <!-- Nav -->
