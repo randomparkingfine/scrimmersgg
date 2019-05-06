@@ -7,7 +7,7 @@ $db = new Medoo($cleardb_config);
 $users = $db->select('users', ['username', 'password']);
 $user = $db->get(
 	'users', 
-	['email', 'password'], 
+	['email', 'password', 'username'], 
 	['username'=>$_POST['username']]
 );
 if($user === null) {
@@ -23,6 +23,7 @@ else {
 		/*
 		session_start();
 		$_SESSION['email'] = $user['email'];
+		$_SESSION['username'] = $user['username'];
 		 */
 	}
 }

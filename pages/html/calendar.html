@@ -63,6 +63,7 @@
           $("#day-schedule").on('selected.artsy.dayScheduleSelector', function (e, selected) 
           {
               var arr = "{";
+              var s = "";
               for (var i = 0; i < selected.length; i++)
               {
                   arr +='"'+ i +'":';
@@ -71,8 +72,7 @@
                     arr += ","
               }
               arr += "}";
-              console.log(arr);
-              str.push(arr);
+              str.push(JSON.parse(arr));
               console.log(str);
           })
           $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(

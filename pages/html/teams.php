@@ -16,6 +16,21 @@
         <nav id="nav">
             <ul class="links">
                 <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+				<?php
+				require __DIR__ . '/../../server/navbar.php';
+				if(!empty($_SESSION)) {
+					if(activeUser()) {
+						loggedInNav();
+					}
+					else {
+						defaultNav();
+					}
+				}
+				else {
+					defaultNav();
+				}
+				?>
             </ul>
         </nav>
         <!-- Regions -->
