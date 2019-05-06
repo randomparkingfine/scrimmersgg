@@ -1,13 +1,15 @@
 <?php
-require __DIR__ .  '/server/db.php';
-require 'AltoRouter.php'; // vendor/altorouter/altorouter/
+
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/server/db.php';
+//require 'AltoRouter.php'; // vendor/altorouter/altorouter/
 
-
+use SendGrid\Mail;
 use Medoo\Medoo;
     
 session_start();
 
+var_dump($_SESSION);
 
 $router = new AltoRouter();
 
@@ -15,10 +17,16 @@ $router = new AltoRouter();
 $router->map('GET', '/', function() {
 	require __DIR__ . '/pages/html/land.php';
 });
-// User pages which don't exist yet
 
-$router->map('GET', '/about', function() {
-	require __DIR__ . '/pages/html/about.php';
+// The about page will serve as an example of how to use the sendgrid api from php
+$router->map('GET|POST', '/about', function() {
+	if(isset($_POST['message'])) {
+		// Go off to try and send the email from the user
+		require __DIR__ . '/server/aboutMail.php';
+	}
+	else {
+		require __DIR__ . '/pages/html/about.php';
+	}
 });
 
 $router->map('GET|POST', '/schedule', function() {
@@ -44,6 +52,7 @@ $router->map('POST|GET', '/login', function() {
 	}
 });
 $router->map('GET', '/logout', function() {
+	session_destroy();
 	require __DIR__ . '/pages/html/logout.php';
 });
 
@@ -63,15 +72,6 @@ $router->map('POST', '/dbTeams.php', function() {
     
 // User pages
 $router->map('GET', '/user/[a:id]', function($id) {
-    // check to make sure the requested user even exists
-
-
-//    $db = new Medoo($cleardb_config);
-//    $data = $db->select('users', ['username'], ['username'=>$name]);
-//    // we should only find 1 player from this
-//    if(count($data)==1) {
-//        $user_id = $id;
-//        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
 
     $db = new Medoo(array(
 		'database_type' => 'mysql',
@@ -80,15 +80,18 @@ $router->map('GET', '/user/[a:id]', function($id) {
 		'username' => getenv('CLEARDB_USERNAME'),
 		'password' => getenv('CLEARDB_PASSWORD')
 	));
-    $data = $db->get('users', ['username'], ['username'=>$id]);
-    // Check to  make sure the requested user exists at all
-    if(count($data) != null) {
-        $user_id = $id;
-        require __DIR__ . '/pages/html/userPage.php'; // yfw 404 page 404's
+    $user_data = $db->get(
+		'users', 
+		['username', 'user_bio', 'user_games', 'user_links', 'user_schedule'], 
+		['username'=>$id]
+	);
 
-    }
-    else {
+	if($user_data == null) {
+		var_dump($id);
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+	}
+    else {
+        require __DIR__ . '/pages/html/userPage.php';
     }
 });
 // games
