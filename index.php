@@ -9,6 +9,7 @@ use Medoo\Medoo;
     
 session_start();
 
+var_dump($_SESSION);
 
 $router = new AltoRouter();
 
@@ -51,6 +52,7 @@ $router->map('POST|GET', '/login', function() {
 	}
 });
 $router->map('GET', '/logout', function() {
+	session_destroy();
 	require __DIR__ . '/pages/html/logout.php';
 });
 

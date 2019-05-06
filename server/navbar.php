@@ -20,7 +20,7 @@ function activeUser() {
 
 	// Check if the email exists in the records
 	$result = $db->get('users', ['email'], ['email'=>$email]);
-	return $result == null;
+	return $result != null;
 }
 function defaultNav($activePage='') {
 	switch ($activePage) {
