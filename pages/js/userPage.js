@@ -1,10 +1,11 @@
-$("#msg").click(function () {
+$("#submit").on("click",function () {
+	console.log("works");
 	$.ajax({
-		url:"https://api.sendgrid.com/api/mail.send.json",
+		url:"/server/user.php",
 		type:"POST",
 		dataType:"json",
 		data:{
-			
+			"msg":$("message").val(),
 		},
 		success:function (data) {
 			console.log(data);
