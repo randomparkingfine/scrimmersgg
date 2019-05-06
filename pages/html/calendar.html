@@ -73,7 +73,6 @@
               }
               arr += "}";
               str.push(JSON.parse(arr));
-              console.log(str);
           })
           $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(
           {
@@ -90,12 +89,10 @@
             dataType: "text",
             data: {'schedule': JSON.stringify(str)},
             success: function(data, status) {
-                console.log("gucci");
+                console.log("Send schedule -> done");
             }
             
           });
-
-          //console.log(test);
       });
   </script>
   </body>
