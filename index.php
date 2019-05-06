@@ -92,6 +92,10 @@ $router->map('GET', '/user/[a:id]', function($id) {
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
 	}
     else {
+
+		$temp = $db->select('users', "email",["username[=]"=>$id]);
+		$_SESSION['atemail'] = $temp[0];
+		$_SESSION['atPage'] = $id;
         require __DIR__ . '/pages/html/userPage.php';
     }
 });

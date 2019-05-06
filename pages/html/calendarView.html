@@ -58,10 +58,8 @@
                 url: "/scheduleView",
                 dataType: "text",
                 success: function(data, status) {
-                    console.log("ok");
-                    console.log(data);
+                    console.log("Get schedule -> done");
                     str = JSON.parse(data.substring(13));
-                    console.log(str);
                     for (var i = 0; i < str.length; i++)
                     {
                         arr.push(str[i].user_schedule);
@@ -71,7 +69,6 @@
                         timeArr.push(arr[i]);
                         
                     }
-                    console.log(timeArr);
                     var scheduleJson = JSON.parse(timeArr)
                     getSchedule(scheduleJson);
                     $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(scheduleObj);
@@ -79,7 +76,6 @@
                 error: function(){
                 }            
             });
-            console.log(str);
             $("#day-schedule").dayScheduleSelector({
                 days: [0, 1, 2, 3, 4, 5, 6],
                 interval: 60,
@@ -116,9 +112,7 @@
                     if (j === 0)
                     {
                       var time = schedule[i][j].time;
-                      console.log('uuuuuuh ' + time);
                       timeOfDay.push(time);
-                      console.log(timeOfDay);
                       if (schedule[i][next] === undefined) {
                         canInsert = true;
                         var time = parseInt(schedule[i][j].time);
@@ -153,7 +147,6 @@
                   if (canInsert)
                   {
                     scheduleObj[day] = dayTime;
-                    console.log(scheduleObj);
                     canInsert = false;
                   }
                 }
