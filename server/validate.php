@@ -8,17 +8,17 @@ use Medoo\Medoo;
     $status['username'] = "Valid";
     $db = new Medoo($cleardb_config);
    
-    $data = $db->select('users', ["username","email"],["username[=]"=>$_POST["username"], "email[=]"=>$_POST["email"] ]);
+    $data = $db->get('users', ["username","email"],["username"=>$_POST["username"], "email"=>$_POST["email"] ]);
     
     if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
         $status['email'] = "Invalid";
 
     }
-    if($data[0]['email'] == $_POST["email"]){
+    if($data['email'] == $_POST["email"]){
         $status['email'] = "Invalid";
     }
     
-    if($data[0]['username'] == $_POST["username"]){
+    if($data['username'] == $_POST["username"]){
         $status['username'] = "Invalid";
     }
 //    echo json_encode($status);
