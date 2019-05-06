@@ -1,17 +1,20 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title></title>
+		<title><?php echo $user_data['username'];?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
+		<link rel="icon" href="/images/favicon.gif" types="image/gif" >
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
 		
 			<header id="header">
-				<a href="index.html" class="logo">User Page</a>
+				<?php
+				echo '<a href="/user/'.$user_data['username'].'" class="logo">' . $user_data['username'] . '</a>';
+				?>
 			</header>
 			
 			<!-- Navbar -->
@@ -82,7 +85,15 @@
 			
 		</div>
 		
+
 		<footer id="footer">
+			<?php
+			// Attempt to only ever show the message box if the user is logged in
+			if(!activeUser()) {
+				echo '<h2>Login to send ' . $user_data['username'] . 'a message</h2>';
+				exit;
+			}
+			?>
 			<section>
 				<form method="post" action="#">
 					<div class="fields">
