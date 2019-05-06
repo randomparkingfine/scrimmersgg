@@ -4,7 +4,7 @@ require __DIR__ . '/db.php';
 use Medoo\Medoo;
 
 function activeUser() {
-	if(!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
+	if(!isset($_SESSION['email'])) {
 		return false;
 	}
 
@@ -33,6 +33,7 @@ function defaultNav($activePage='') {
 			echo '<li class="active"><a href="/signup">Signup</a></li>';
 			break;
 		default:
+            echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
 			echo '<li><a href="/login">Login</a></li>';
 			echo '<li><a href="/signup">Signup</a></li>';
 			break;
