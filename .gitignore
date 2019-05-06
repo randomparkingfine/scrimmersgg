@@ -11,4 +11,4 @@ AltoRouter.php
 vendor/
 .DS_Store
 .env
-mimic.sh
+*mimic*
