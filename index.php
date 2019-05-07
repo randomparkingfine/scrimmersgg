@@ -14,8 +14,11 @@
     
     // Base level pages
     $router->map('GET', '/', function() {
-                 require __DIR__ . '/pages/html/land.php';
-                 });
+        require __DIR__ . '/pages/html/land.php';
+    });
+    $router->map('GET', '/admin', function() {
+        require __DIR__ . '/pages/html/admin.php';
+    });
     
     // The about page will serve as an example of how to use the sendgrid api from php
     $router->map('GET|POST', '/about', function() {
