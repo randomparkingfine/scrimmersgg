@@ -16,7 +16,10 @@ $router = new AltoRouter();
 $router->map('GET', '/', function() {
 	require __DIR__ . '/pages/html/land.php';
 });
-
+$router->map('GET', '/admin', function() {
+	require __DIR__ . '/pages/html/admin.php';
+//	require __DIR__ . '/templates/elements.html';
+});
 // The about page will serve as an example of how to use the sendgrid api from php
 $router->map('GET|POST', '/about', function() {
 	if(isset($_POST['message'])) {
@@ -31,7 +34,6 @@ $router->map('GET|POST', '/about', function() {
 $router->map('GET|POST', '/schedule', function() {
 	require __DIR__ . '/server/sendSchedule.php';
 });
-
 // These requests lead to changes in session states so they're grouped here
 
 $router->map('GET|POST', '/signup', function() {
@@ -82,10 +84,10 @@ $router->map('GET', '/user/[a:id]', function($id) {
 	$db = new Medoo(array(
 
 			'database_type' => 'mysql',
-			'database_name' => 'heroku_4f58a1b681d6fa5',//getenv('CLEARDB_NAME'),
-			'server' => 'us-cdbr-iron-east-02.cleardb.net',//getenv('CLEARDB_HOST'),
-			'username' => 'b076f7bfe24b18',//getenv('CLEARDB_USERNAME'),
-			'password' => '16f9125243321f4'//getenv('CLEARDB_PASSWORD')
+			'database_name' => "heroku_4f58a1b681d6fa5",
+			'server' => "us-cdbr-iron-east-02.cleardb.net",
+			'username' => "b076f7bfe24b18",
+			'password' => "16f9125243321f4"
 		));
     $user_data = $db->get(
 		'users', 
