@@ -94,6 +94,11 @@
 								</h5>
 							</div>
 						</div>
+						<?php
+						if($_SESSION['username'] == $_SESSION['atPage']) {
+							echo "<form><input type='button' value='Edit Your Schedule' id='editBtn'></form>";
+						}						
+						?>
 					</header>
 				</section>
 			</div>
@@ -206,6 +211,9 @@
 					}
 					}
 				}
+				$('#editBtn').on('click', function() {
+					$(location).attr('href', '/mySchedule');
+				})
 			})($);
  		</script>
 
