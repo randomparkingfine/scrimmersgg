@@ -8,8 +8,8 @@
 			console.log(data);
 			for (var i = 1; i < data.length; i++) {
 				var key = data[i];
-				$("#results").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td>  <button type='button' onclick = 'promoted(this)' id='"+key['username'] + "' value='"+key['username']+ "'>Delete</button></td></tr>");//"' id='"+key['username']+
-				//<button type='button' value='"+key['username']+"'>Delete</button>
+				$("#results").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td>  <button type='button' onclick = 'removeUser(this)' id='"+key['username'] + "' value='"+key['username']+ "'>Delete</button></td></tr>");//"' id='"+key['username']+
+				//<button type='button' value='"+key['username']+"'>Promote</button>
 //				$("#filteredTeams").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td> <input type='checkbox' id='demo-copy' name='demo-copy'> </td></tr>");
 			}
 		}
@@ -22,7 +22,7 @@
 //	console.log(currentBtn);
 //});
 
-function promoted(test) {
+function removeUser(test) {
 //	console.log(test.id);
 	$.post(
 		"/server/remove.php",
