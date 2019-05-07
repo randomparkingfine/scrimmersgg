@@ -36,7 +36,7 @@
         <!-- Regions -->
         <div id="main">
             <!-- Filters -->
-            <section class="post">
+            <section> <!--class="post"-->
                 <form method="post">
                     <select name="region" id="select-region">
                         <option value="none">PLEASE SELECT REGION</option>
@@ -44,10 +44,9 @@
                         <option value="South America">South America</option>
                         <option value="Europe">Europe</option>
                     </select>
+                    <br>
                     <input id="submit-filters" type="button" value="Set change" class="primary"/>
                 </form>
-            </section>
-            <section>
                 <div class="table-wrapper">
                     <table id = "filteredTeams">
                         <thead>
