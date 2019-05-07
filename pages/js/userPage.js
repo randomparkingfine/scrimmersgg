@@ -1,16 +1,13 @@
-$("#submit").on("click",function () {
-	console.log("works");
-	$.ajax({
-		url:"/server/user.php",
-		type:"POST",
-		dataType:"json",
-		data:{
-			"msg":$("message").val(),
+$("#submit").click(function () {
+	console.log("sending user mail");
+	$.post(
+		"/server/user.php",
+		{
+			msg:$("#message").val(),
 		},
-		success:function (data) {
+		function (data) {
+			$("#submit").prop("disabled",true);
 			console.log(data);
 		}
-		
-		
-	})
+	);
 });
