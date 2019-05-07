@@ -11,4 +11,6 @@
     [
         'email'=>$email
     ]);
+
+    echo $_SESSION['username'];
 ?>
