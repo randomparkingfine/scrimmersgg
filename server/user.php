@@ -2,33 +2,34 @@
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/db.php';
 use Medoo\Medoo;
-    session_start();
 	
+session_start();
+$db = new Medoo($cleardb_config);
 	
-	$db = new Medoo($cleardb_config);
+$data = $db->get('users', ["username","email"],["username[=]"=>$_SESSION['atPage']]);
 	
-	
-	$data = $db->select('users', ["username","email"],["username[=]"=>$_SESSION['atPage']]);
-	
-//	echo json_encode($data[0]);
-//	echo json_encode($_SESSION);
+/*
+var_dump($_POST);
+var_dump($_SESSION);
+var_dump($data);
+*/
+//exit;
 	
 
+// Provided by user when the request a message to be sent
 $address = $_SESSION['email'];
-
 $name = $_SESSION['username'];
-
 $body = $_POST['msg'];
 
 $mail = new \SendGrid\Mail\Mail();
 
 // This is the most important field to set in the email's headers
-$mail->addTo($data[0], $data[1]);
+$mail->addTo($data['email'], $data['username']);
 
 // Setting up some of the email header data
 	// Keep in mind these dont'really do much for actual control
 $mail->setSubject($_SESSION['username']." wants to talk");
-$mail->setFrom($address, $name);
+$mail->setFrom('scrimmers.mail@scrimmers.gg', $name);
 // make sure to treat the body as plain text to not allow any cheesy html <script> injection
 $mail->addContent('text/plain', $body);
 
