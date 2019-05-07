@@ -12,10 +12,10 @@ $('#submit-filters').click(function() {
                                   usernames:options,
                                   },
                                   success: function(data) {
-//                                  console.log(data);
+                                  console.log(data);
                                   for( var item in data){
 //                                  var rest = data[item]['team_bio'].slice(0, 70);
-                                  $("#filteredTeams").append('<tr><td>' +'<a href=/user/' + data[item]['username'] + '>' + data[item]['username'] +'</a>' + '</td><td>'  + data[item]['games'] + '</td><td>' + data[item]['user_bio']  +  '</td></tr>');
+                                  $("#filteredTeams").append('<tr><td>' +'<a href=/user/' + data[item]['username'] + '>' + data[item]['username'] +'</a>' + '</td><td>'  + data[item]['user_games'] + '</td><td>' + data[item]['user_bio']  +  '</td></tr>');
                                   }
                                   },
                                   
