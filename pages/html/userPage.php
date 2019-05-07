@@ -94,6 +94,11 @@
 								</h5>
 							</div>
 						</div>
+						<?php
+						if($_SESSION['username'] == $_SESSION['atPage']) {
+							echo "<form><input type='button' value='Edit Your Schedule' id='editBtn'></form>";
+						}						
+						?>
 					</header>
 				</section>
 			</div>
@@ -206,6 +211,9 @@
 					}
 					}
 				}
+				$('#editBtn').on('click', function() {
+					$(location).attr('href', '/mySchedule');
+				})
 			})($);
  		</script>
 
@@ -214,6 +222,10 @@
 			// Attempt to only ever show the message box if the user is logged in
 			if(!activeUser()) {
 				echo '<h2>Login to send ' . $user_data['username'] . 'a message</h2>';
+				exit;
+			}
+			// make sure users can't message themselves
+			if($_SESSION['username'] == $user_data['username']) {
 				exit;
 			}
 			?>
@@ -237,7 +249,12 @@
 		<script src="/assets/js/breakpoints.min.js"></script>
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
-		<script src="/pages/js/userPage.js"></script>
+		<?php
+		// only give the js back if they are not the same person
+		if($_SESSION['username'] != $user_data['username']) {
+			echo '<script src="/pages/js/userPage.js"></script>';
+		}
+		?>
 	</body>                        
 </html>
 

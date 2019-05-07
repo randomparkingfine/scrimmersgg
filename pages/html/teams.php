@@ -36,9 +36,11 @@
         <!-- Regions -->
         <div id="main">
             <!-- Filters -->
-            <section> <!--class="post"-->
+            <section >
                 <form method="post">
                     <select name="region" id="select-region">
+
+
                         <option value="none">PLEASE SELECT REGION</option>
                         <option value="North America">North America</option>
                         <option value="South America">South America</option>

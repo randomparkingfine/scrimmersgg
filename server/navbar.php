@@ -4,7 +4,7 @@ require __DIR__ . '/db.php';
 use Medoo\Medoo;
 
 function activeUser() {
-	if(!isset($_SESSION['email']) || !isset($_SESSION['username'])) {
+	if(!isset($_SESSION['email'])) {
 		return false;
 	}
 
@@ -23,23 +23,20 @@ function activeUser() {
 	return $result != null;
 }
 function defaultNav($activePage='') {
-	switch ($activePage) {
-		case 'login':
-			echo '<li class="active"><a href="/login">Login</a></li>';
-			echo '<li><a href="/signup">Signup</a></li>';
-			break;
-		case 'signup':
-			echo '<li><a href="/login">Login</a></li>';
-			echo '<li class="active"><a href="/signup">Signup</a></li>';
-			break;
-		default:
+
+            echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
 			echo '<li><a href="/login">Login</a></li>';
 			echo '<li><a href="/signup">Signup</a></li>';
-			break;
-	}
+			
 }
 
 function loggedInNav() {
-	echo '<li><a href="/logout">Logout</a></li>';
+            echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
+            echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
+			echo '<li><a href="/login">Login</a></li>';
+			echo '<li><a href="/signup">Signup</a></li>';
+
+	
 }
+
 ?>
