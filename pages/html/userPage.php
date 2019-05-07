@@ -224,6 +224,10 @@
 				echo '<h2>Login to send ' . $user_data['username'] . 'a message</h2>';
 				exit;
 			}
+			// make sure users can't message themselves
+			if($_SESSION['username'] == $user_data['username']) {
+				exit;
+			}
 			?>
 			<section>
 				<form>
@@ -245,7 +249,12 @@
 		<script src="/assets/js/breakpoints.min.js"></script>
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
-		<script src="/pages/js/userPage.js"></script>
+		<?php
+		// only give the js back if they are not the same person
+		if($_SESSION['username'] != $user_data['username']) {
+			echo '<script src="/pages/js/userPage.js"></script>';
+		}
+		?>
 	</body>                        
 </html>
 
