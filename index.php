@@ -1,5 +1,4 @@
 <?php
-    
     require __DIR__ . '/vendor/autoload.php';
     require __DIR__ . '/server/db.php';
     //require 'AltoRouter.php'; // vendor/altorouter/altorouter/
@@ -134,8 +133,7 @@
     $match=$router->match();
     if(is_array($match) && is_callable($match['target'])){
         call_user_func_array($match['target'], $match['params']);
-    }
-    else {
+    } else {
         // dank 404
         header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
     }

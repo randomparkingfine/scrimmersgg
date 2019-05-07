@@ -49,7 +49,6 @@
                     <br>
                     <input id="submit-filters" type="button" value="Set change" class="primary"/>
                 </form>
-
                 <div class="table-wrapper">
                     <table id = "filteredTeams">
                         <thead>

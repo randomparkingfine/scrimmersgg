@@ -9,6 +9,7 @@ if(activeUser()) {
 }
 	
 $db = new Medoo($cleardb_config);
+
 $users = $db->select('users', ['username', 'password']);
 $user = $db->get(
 	'users', 
