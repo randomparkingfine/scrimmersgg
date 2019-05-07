@@ -17,5 +17,5 @@
 	
 	$data = $db->delete('users', ["username"=>$_POST["remUser"]]);
 	
-	echo json_encode("success");	
+//	echo json_encode("success");
 ?>
