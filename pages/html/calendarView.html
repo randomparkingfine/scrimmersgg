@@ -36,7 +36,7 @@
             </ul>
           </nav>
 
-          <div id="main" pointer-events="none">           
+          <div id="scheduleUser" pointer-events="none">           
               <h2>Schedule:</h2><br>
               <div id='cal'>
                 <h5>
@@ -51,17 +51,15 @@
         var arr = [];
         var timeArr = [];
         var scheduleObj = {};
-        var test;
+        
         (function ($) {
             $.ajax({
                 type: "GET",
                 url: "/scheduleView",
                 dataType: "text",
                 success: function(data, status) {
-                    console.log("ok");
-                    console.log(data);
-                    str = JSON.parse(data);
-                    console.log(str);
+                    console.log("Get schedule -> done");
+                    str = JSON.parse(data.substring(13));
                     for (var i = 0; i < str.length; i++)
                     {
                         arr.push(str[i].user_schedule);
@@ -73,15 +71,11 @@
                     }
                     var scheduleJson = JSON.parse(timeArr)
                     getSchedule(scheduleJson);
-                    console.log(scheduleArr[0]);
-                    test = scheduleArr[0].replace('\"', "");
-                    console.log(test);
-                    $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(test);
+                    $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(scheduleObj);
                 },
                 error: function(){
                 }            
             });
-            console.log(str);
             $("#day-schedule").dayScheduleSelector({
                 days: [0, 1, 2, 3, 4, 5, 6],
                 interval: 60,
@@ -94,44 +88,68 @@
             
             function getSchedule(schedule)
             {   
-                var str = "{" + '\n';
-                var count = 0;
+                
+                var dayTime = [];
+                var canInsert = false;
                 for (var i = 0; i < schedule.length; i++) 
                 {
+                  if (day !== schedule[i][0].day) {
+                    var dayTime = [];
+                  }
+                  var timeOfDay = [];              
+                  var hour = 0;
+                  var day = "";
                   var j = 0;
-                  var next = j + 1;
+                  var next = 0;
                   while (schedule[i][j] !== undefined)
                   {
-                    
+                    day = schedule[i][j].day;      
                     next = j + 1;
+                    if (schedule[i][next] !== undefined && schedule[i][next].day !== day)
+                    {
+                      canInsert = true;
+                    }
                     if (j === 0)
                     {
-                      str += "'"+ schedule[i][j].day +"' : [[";
-                      str += "'" + schedule[i][j].time + "', ";
+                      var time = schedule[i][j].time;
+                      timeOfDay.push(time);
+                      if (schedule[i][next] === undefined) {
+                        canInsert = true;
+                        var time = parseInt(schedule[i][j].time);
+                        if (time < 10) {
+                          var realTime = "0"+(time+1) + ":00";
+                        }
+                        else {
+                          var realTime = time + ":59";
+                        }
+                        timeOfDay.push(realTime);
+                        dayTime.push(timeOfDay);
+                      }
                     }
                     else 
                     {
-                        if (schedule[i][next] === undefined)
-                        {
-
-                          str += "'" + schedule[i][j].time + "'";
+                      if (schedule[i][next] === undefined)
+                      {
+                        canInsert = true;
+                        var time = parseInt(schedule[i][j].time);
+                        if (time < 10) {
+                          var realTime = "0"+(time+1) + ":00";
                         }
-                        
-                    }
+                        else {
+                          var realTime = time + ":59";
+                        }
+                        timeOfDay.push(realTime);
+                        dayTime.push(timeOfDay);
+                      } 
+                    } 
                     j++;
-
                   }
-                  if (i !== schedule.length - 1)
+                  if (canInsert)
                   {
-                    str += ']],' + '\n';
-                  }
-                  else 
-                  {
-                    str += ']]' + '\n';
+                    scheduleObj[day] = dayTime;
+                    canInsert = false;
                   }
                 }
-                str += '}';
-                scheduleArr.push(str);
             }
         })($);
   </script>

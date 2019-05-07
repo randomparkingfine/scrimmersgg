@@ -2,9 +2,8 @@
     require __DIR__ . '/../vendor/autoload.php';
     require __DIR__ . '/db.php';
     use Medoo\Medoo;
-    session_start();
+	session_start();
     $temp = $_SESSION['game'];
-    session_destroy();
    
 //    $db = new Medoo($cleardb_config);
     $db = new Medoo(array(

@@ -1,15 +1,13 @@
-$("#msg").click(function () {
-	$.ajax({
-		url:"https://api.sendgrid.com/api/mail.send.json",
-		type:"POST",
-		dataType:"json",
-		data:{
-			
+$("#submit").click(function () {
+	console.log("sending user mail");
+	$.post(
+		"/server/user.php",
+		{
+			msg:$("#message").val(),
 		},
-		success:function (data) {
+		function (data) {
+			$("#submit").prop("disabled",true);
 			console.log(data);
 		}
-		
-		
-	})
+	);
 });

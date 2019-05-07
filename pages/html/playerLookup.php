@@ -41,6 +41,7 @@
         <section class="post">
         <label>Enter Username:</label>
         <input id = "usernames" type = "text"></input>
+        <!-- Commented out because no region
             <form method="post">
                 <select name="region" id="select-region">
                     <option value="none">PLEASE SELECT REGION</option>
@@ -50,14 +51,16 @@
                 </select>
                 <input id="submit-filters" type="button" value="Set change" class="primary" />
             </form>
+            -->
+            <input id="submit-filters" type="button" value="Search" class="primary" />
         </section>
         <section>
             <div class="table-wrapper">
                 <table id="filteredTeams">
                     <thead>
                         <th>Username</th>
-                        <th>Captain</th>
-                        <th>Team Bio</th>
+                        <th>Games</th>
+                        <th>User Bio</th>
                     </thead>
                 </table>
             </div>
