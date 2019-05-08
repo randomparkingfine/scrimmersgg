@@ -6,5 +6,4 @@ $cleardb_config = array(
 		'username' => getenv('CLEARDB_USERNAME'),
 		'password' => getenv('CLEARDB_PASSWORD')
 );
-
 ?>
