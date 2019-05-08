@@ -10,4 +10,14 @@ $("#submit").click(function () {
 			console.log(data);
 		}
 	);
+                   
 });
+
+
+
+
+
+
+
+
+
