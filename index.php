@@ -106,7 +106,7 @@
                                        );
                  
                  if($user_data == null) {
-                 var_dump($id);
+//                 var_dump($id);
                  header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
                  }
                  else {

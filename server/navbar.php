@@ -32,17 +32,10 @@ function defaultNav($activePage='') {
 
 function loggedInNav() {
     echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
-
-            echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
-			echo '<li><a href="/login">Login</a></li>';
-			echo '<li><a href="/signup">Signup</a></li>';
+    echo '<li><a href="/user/' .$_SESSION['username']. '">My Profile</a></li>';
+    echo '<li><a href="/logout">Logout</a></li>';
 
 	
 }
 
-function loggedInNav() {
-	echo '<li><a href="/searchPlayer">Player Lookup</a></li>';
-    echo '<li><a href="/user/' .$_SESSION['username']. '">My Profile</a></li>';
-	echo '<li><a href="/logout">Logout</a></li>';
-}
 ?>
