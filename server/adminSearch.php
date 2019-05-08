@@ -7,7 +7,7 @@
 	$db = new Medoo($cleardb_config);
 	$check = $_POST['srch'] . "%";
 	
-	$data = $db->select('users', "*",["username[~]"=>$check]);
+	$data = $db->select('users', ["username","email"],["username[~]"=>$check]);
 	
 	echo json_encode($data);
 	
