@@ -1,3 +1,18 @@
+function action_response(data) {
+	console.log(data);
+	if(data == 'success') {
+		console.log('attempting redirect');
+		window.location.href = '/';
+	}
+	if(data["username"] == "Invalid"){
+		$('#nameLabel').text('Username - Taken');
+		$('#nameLabel').css('color', 'darkred');
+	} 
+	if(data["email"] == "Invalid"){
+		$('#emailLabel').text('Email - Taken');
+		$('#emailLabel').css('color', 'darkred');
+	}
+}
 $('#submit-button').click(function() {
 //    console.log("work");
     var f = false;
@@ -17,23 +32,16 @@ $('#submit-button').click(function() {
         f = true;
     }
     if(f){return;}
-    $.post(
-        "/signup",
-        {
+    $.ajax({
+		type: "POST",
+        url:"/signup",
+        data : {
             username:$('#name').val(),
             email:$('#email').val(),
             password:$('#password').val(),
         },
-        function(data) {
-            console.log(data);
-            if(data["username"] == "Invalid"){
-                $('#nameLabel').text('Username - Taken');
-                $('#nameLabel').css('color', 'darkred');
-            } 
-            if(data["email"] == "Invalid"){
-                $('#emailLabel').text('Email - Taken');
-                $('#emailLabel').css('color', 'darkred');
-            }
-        },"json"
-    ); 
+        success: function(data) {
+			action_response(data);
+        }
+    });
 });

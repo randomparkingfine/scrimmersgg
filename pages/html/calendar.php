@@ -18,21 +18,32 @@
 
         <!-- Header -->
           <header id="header">
-            <a href="index.html" class="logo">Massively</a>
+            <?php
+            echo '<a href="/user/'.$_SESSION['username'].'" class="logo">' . $_SESSION['username'] . '</a>';
+            ?>
           </header>
-
-          <!-- Nav -->
-        <nav id="nav">
+          
+          <!-- Navbar -->
+          <nav id = "nav">
             <ul class="links">
-              <li><a href="index.html">This is Massively</a></li>
-              <li><a href="generic.html">Generic Page</a></li>
-              <li class="active"><a href="elements.html">Elements Reference</a></li>
-            </ul>
-            <ul class="icons">
-              <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-              <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-              <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <?php
+              require __DIR__ . '/../../server/navbar.php';
+              if(!empty($_SESSION)) {
+                if(activeUser()) {
+                  loggedInNav();
+                }
+                else {
+                  defaultNav();
+                }
+              }
+              else {
+                defaultNav();
+              }
+              ?>
+            </ul><ul class="icons">
+              <li><a href="https://github.com/smolltucc/scrimmersgg" class="icon fa-github"><span class="label">Github</span></a></li>
             </ul>
           </nav>
 
@@ -63,6 +74,7 @@
           $("#day-schedule").on('selected.artsy.dayScheduleSelector', function (e, selected) 
           {
               var arr = "{";
+              var s = "";
               for (var i = 0; i < selected.length; i++)
               {
                   arr +='"'+ i +'":';
@@ -71,9 +83,7 @@
                     arr += ","
               }
               arr += "}";
-              console.log(arr);
-              str.push(arr);
-              console.log(str);
+              str.push(JSON.parse(arr));
           })
           $("#day-schedule").data('artsy.dayScheduleSelector').deserialize(
           {
@@ -83,19 +93,19 @@
 
       $('#selectedBtn').on("click",function()
       {
-          console.log(str[0]);
+          console.log(str);
           $.ajax({
             type: "POST",
             url: "/schedule",
             dataType: "text",
             data: {'schedule': JSON.stringify(str)},
             success: function(data, status) {
-                console.log("gucci");
+                console.log("Send schedule -> done");
+                $(location).attr('href', '/user/' + data);
+
             }
             
           });
-
-          //console.log(test);
       });
   </script>
   </body>

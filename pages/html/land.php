@@ -16,7 +16,7 @@
 						<h1>Scrimmers.gg</h1>
 						<p>"Werks on my machine" - everyone 2k19 GOTY Edition</p>
 						<ul class="actions">
-							<li><a href="#main" class="button icon solo fa-arrow-down scrolly">Find teams</a></li>
+							<li><a href="#main" class="button icon solo fa-arrow-down scrolly">"Werks on my machine" -everyone 2k19 GOTY Edition</a></li>
 						</ul>
 					</div>
 
