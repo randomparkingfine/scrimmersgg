@@ -12,6 +12,12 @@
 		<header id="header">
 			<a href="#" class="logo">ADMIN</a>
 		</header>
+		<!-- Navbar  -->
+		<nav id="nav">
+			<ul class="links">
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</nav>
 		<!-- Regions -->
 		<div id="main">
 			<!-- Filters -->
