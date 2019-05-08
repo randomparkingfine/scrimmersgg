@@ -54,6 +54,7 @@
 							<h2>Bio</h2>
                             <input id="BioEdit" type="text" style="display: none"></input>
                             <div id="hideOnEdit1">
+                            <div id="updatedFrom">
 							<?php 
 							if($user_data['user_bio'] != null) {
 								echo htmlspecialchars($user_data['user_bio']);
@@ -64,12 +65,14 @@
 							}
 							?>
                             </div>
+                            </div>
 							<h2>Links</h2>
                             <input id="LinkEdit" type="text"style="display: none" ></input>
                             <br>
                             <div id="hideOnEdit2">
+                            <div id="updatedFrom1">
 							<?php 
-							if($user_data['user_links']) {
+							if($user_data['user_links'] != null || count($user_data['user_links']) >0 ) {
 								echo htmlspecialchars($user_data['user_links']);
 							}
 							else {
@@ -77,11 +80,13 @@
 							}
 							?>
                             </div>
+                            </div>
 						</div>
 						<div class ="col-6 col-12-small">
 							<h2>Games</h2>
                             <input id="GameEdit" type="text" style="display: none"></input>
                             <div id="hideOnEdit3">
+                            <div id="updatedFrom2">
 							<?php 
 							if($user_data['user_games'] != null) {
 								echo htmlspecialchars($user_data['user_games']);
@@ -91,6 +96,7 @@
 							}
 							?>
                             </div>
+                            </div>
 						</div>
 
                         <?php
@@ -98,6 +104,7 @@
                                 echo '<input id = "edit" type="button"value="Edit"> ';
                                 echo '<input id = "submitEdit" type="button"value="Submit" style="display: none">';
                                 echo '<script src="/pages/js/userEdit.js"></script>';
+                            
                                 
                             }
                         ?>

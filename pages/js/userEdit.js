@@ -37,17 +37,22 @@ $("#submitEdit").click(function () {
         var newLink = $("#LinkEdit").val();
         var newGames = $("#GameEdit").val();
         
+        
                        
                        
                        
         $.ajax({
-               url: "/../../server/uploadNewProfile.php",
+            url: "/../../server/uploadNewProfile.php",
             type: "POST",
             data:{passedBio:newBio, passedLink:newLink, passedGames:newGames},
             success: function(data) {
+               console.log(newLink);
             }
             });
-            
+            $("#updatedFrom").text(newBio);
+            $("#updatedFrom1").text(newLink);
+            $("#updatedFrom2").text(newGames);
+                    
             $("#BioEdit").hide();
             $("#LinkEdit").hide();
             $("#GameEdit").hide();
@@ -56,10 +61,7 @@ $("#submitEdit").click(function () {
             $("#hideOnEdit1").show();
             $("#hideOnEdit2").show();
             $("#hideOnEdit3").show();
-            location.reload();
                        
-                       
-
 });
 
 

@@ -10,7 +10,7 @@
     $db->update('users', [
                 
                 'user_bio'=>$_POST['passedBio'],
-                'user_links'=>$_POST['passedLinks'],
+                'user_links'=>$_POST['passedLink'],
                 'user_games'=>$_POST['passedGames']
                 
                 ],
