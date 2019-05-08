@@ -52,15 +52,22 @@
 					<div class = "row">
 						<div class ="col-6 col-12-small">
 							<h2>Bio</h2>
+                            <input id="BioEdit" type="text" style="display: none"></input>
+                            <div id="hideOnEdit1">
 							<?php 
 							if($user_data['user_bio'] != null) {
 								echo htmlspecialchars($user_data['user_bio']);
+                               
 							}
 							else {
 								echo '<p>User has no bio</p>';
 							}
 							?>
+                            </div>
 							<h2>Links</h2>
+                            <input id="LinkEdit" type="text"style="display: none" ></input>
+                            <br>
+                            <div id="hideOnEdit2">
 							<?php 
 							if($user_data['user_links']) {
 								echo htmlspecialchars($user_data['user_links']);
@@ -69,9 +76,12 @@
 								echo '<p>No links here ;O;</p>';
 							}
 							?>
+                            </div>
 						</div>
 						<div class ="col-6 col-12-small">
 							<h2>Games</h2>
+                            <input id="GameEdit" type="text" style="display: none"></input>
+                            <div id="hideOnEdit3">
 							<?php 
 							if($user_data['user_games'] != null) {
 								echo htmlspecialchars($user_data['user_games']);
@@ -80,7 +90,18 @@
 								echo '<p>No games found here ;-;</p>';
 							}
 							?>
+                            </div>
 						</div>
+
+                        <?php
+                            if($_SESSION['username'] == $_SESSION['atPage']) {
+                                echo '<input id = "edit" type="button"value="Edit"> ';
+                                echo '<input id = "submitEdit" type="button"value="Submit" style="display: none">';
+                                echo '<script src="/pages/js/userEdit.js"></script>';
+                                
+                            }
+                        ?>
+
 					</div>
 				</section>
 				<section id="user-schedule" class="post">
@@ -249,6 +270,7 @@
 		<script src="/assets/js/breakpoints.min.js"></script>
 		<script src="/assets/js/util.js"></script>
 		<script src="/assets/js/main.js"></script>
+
 		<?php
 		// only give the js back if they are not the same person
 		if($_SESSION['username'] != $user_data['username']) {

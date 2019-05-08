@@ -111,9 +111,16 @@
                  require __DIR__ . '/server/dbPlayers.php';
                  });
     
+    $router->map('POST', '/editUserdb.php', function() {
+                 require __DIR__ . '/server/editUserdb.php';
+                 });
     
     $router->map('POST', '/dbTeams.php', function() {
                  require __DIR__ . '/server/dbTeams.php';
+                 });
+    
+    $router->map('POST', '/uploadNewProfile.php', function() {
+                 require __DIR__ . '/server/uploadNewProfile.php';
                  });
     
     
@@ -135,7 +142,10 @@
                                        );
                  
                  if($user_data == null) {
-                 	header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+
+//                 var_dump($id);
+                 header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+
                  }
                  else {
                  
