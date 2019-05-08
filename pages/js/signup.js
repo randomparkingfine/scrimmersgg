@@ -1,6 +1,6 @@
 function action_response(data) {
 	console.log(data);
-	if(data == 'success') {
+	if(data.contains('success')) {
 		console.log('attempting redirect');
 		window.location.href = '/';
 	}
