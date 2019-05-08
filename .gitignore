@@ -12,4 +12,3 @@ vendor/
 .DS_Store
 .env
 *mimic*
-composer.lock
