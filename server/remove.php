@@ -9,6 +9,8 @@
 	
 	
 	$data = $db->delete('users', ["username"=>$_POST["remUser"]]);
+	$data = $db->delete('teams', ["captain"=>$_POST["remUser"]]);
+	
 	
 //	echo json_encode("success");
 ?>

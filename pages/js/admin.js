@@ -1,29 +1,38 @@
-//$("#filter").on("click",function () {
-	console.log("works");
-	$.ajax({
-		url:"/server/admin.php",
-		type:"GET",
-		dataType:"json",
-		success:function (data) {
-			console.log(data);
-			for (var i = 1; i < data.length; i++) {
-				var key = data[i];
-				$("#results").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td>  <button type='button' onclick = 'removeUser(this)' id='"+key['username'] + "' value='"+key['username']+ "'>Delete</button> <button type='button' onclick = 'promote(this)' id='"+key['username'] + 1 + "' value ='" + key['email'] + "'>Promote</button></td></tr>");//"' id='"+key['username']+
-				//<button type='button' value='"+key['username']+"'>Promote</button>
-//				$("#filteredTeams").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td> <input type='checkbox' id='demo-copy' name='demo-copy'> </td></tr>");
-			}
+$.ajax({
+	url:"/server/admin.php",
+	type:"GET",
+	dataType:"json",
+	success:function (data) {
+		console.log(data);
+		for (var i = 1; i < data.length; i++) {
+			var key = data[i];
+			$("#results").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td>  <button type='button' onclick = 'removeUser(this)' id='"+key['username'] + "' value='"+key['username']+ "'>Delete</button> <button type='button' onclick = 'promote(this)' id='"+key['username'] + 1 + "' value ='" + key['email'] + "'>Promote</button></td></tr>");//"' id='"+key['username']+
 		}
-	});
-//});
-//<input type="checkbox" id="demo-copy" name="demo-copy">
+	}
+});
+$("#filter").on("click",function () {
+	$("#results").empty();
+	$.post(
+			"/server/adminSearch.php",
+			{
+				srch: $("#search").val(),
+			},
+			function(data) {
+				console.log(data);
+				for (var i = 0; i < data.length; i++) {
+					var key = data[i];
+					if (!key['username'] == "") {
+						$("#results").append("<tr><td>" + key['username'] + "</td><td>" + key['email'] + "</td><td>  <button type='button' onclick = 'removeUser(this)' id='"+key['username'] + "' value='"+key['username']+ "'>Delete</button> <button type='button' onclick = 'promote(this)' id='"+key['username'] + 1 + "' value ='" + key['email'] + "'>Promote</button></td></tr>");//"' id='"+key['username']+
+					}
+				}
+			},
+			"json"
+		);
+})
 
-//$("button").click(function () {
-//	var currentBtn = $(this).val();
-//	console.log(currentBtn);
-//});
 
 function removeUser(test) {
-//	console.log(test.id);
+
 	$.post(
 		"/server/remove.php",
 		{
