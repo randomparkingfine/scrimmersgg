@@ -1,14 +1,10 @@
 <?php
     require __DIR__ . '/vendor/autoload.php';
-    require __DIR__ . '/server/db.php';
-    //require 'AltoRouter.php'; // vendor/altorouter/altorouter/
     
     use SendGrid\Mail;
     use Medoo\Medoo;
     
     session_start();
-    
-    //var_dump($_SESSION);
     
     $router = new AltoRouter();
     
@@ -16,9 +12,40 @@
     $router->map('GET', '/', function() {
         require __DIR__ . '/pages/html/land.php';
     });
-    $router->map('GET', '/admin', function() {
-        require __DIR__ . '/pages/html/admin.php';
+    $router->map('POST|GET', '/admin', function() {
+		if(empty($_POST))  {
+        	require __DIR__ . '/pages/html/adminLogin.php';
+		}
+		else {
+			require __DIR__ . '/server/adminVerify.php';
+		}
     });
+	$router->map('GET', '/admin/control', function() {
+		// this meme again
+		$db = new Medoo(array(
+			'database_type' => 'mysql',
+			'database_name' => getenv('CLEARDB_NAME'),
+			'server' => getenv('CLEARDB_HOST'),
+			'username' => getenv('CLEARDB_USERNAME'),
+			'password' => getenv('CLEARDB_PASSWORD')
+		));
+		$dat = $db->get(
+			'admins',
+			['username', 'email'],
+			['username'=> $_SESSION['username']]
+		);
+		if($dat === null) {
+			header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+			exit;
+		}
+		// chekc the session variables other wise
+		if($dat['username'] == $_SESSION['username'] &&
+			$dat['email'] == $_SESSION['email']) {
+			// only then do we give up the admin control page
+			require __DIR__ . '/pages/html/admin.php';
+		}
+
+	});
     
     // The about page will serve as an example of how to use the sendgrid api from php
     $router->map('GET|POST', '/about', function() {
@@ -108,8 +135,7 @@
                                        );
                  
                  if($user_data == null) {
-                 var_dump($id);
-                 header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
+                 	header($_SERVER('SERVER_PROTOCOL', ' 404 Not Found'));
                  }
                  else {
                  
