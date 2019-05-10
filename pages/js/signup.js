@@ -1,8 +1,8 @@
 function action_response(data) {
 	console.log(data);
-	if(data.contains('success')) {
+	if(data.includes('success')) {
 		console.log('attempting redirect');
-		window.location.href = '/';
+		window.location.replace("/");
 	}
 	if(data["username"] == "Invalid"){
 		$('#nameLabel').text('Username - Taken');
