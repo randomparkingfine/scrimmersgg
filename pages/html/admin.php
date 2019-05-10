@@ -22,11 +22,37 @@
 		<div id="main">
 			<!-- Filters -->
 			<section><!--class="post"-->
+				<?php
+                // Grabbing some data about our database
+                require __DIR__ . '/../../vendor/autoload.php';
+                require __DIR__ . '/../../server/db.php';
+                use Medoo\Medoo;
+                $agg = new Medoo($cleardb_config);
+
+                $count_users = $agg->query(
+                    "SELECT COUNT(username) FROM users;"
+                )->fetchAll()[0][0];
+                echo '<p>There are <em>' . $count_users . '</em> users signed up</p>';
+
+                // how many users don't have a schedule setup yet?
+                $count_schedule = $agg->query(
+                    "SELECT COUNT(user_schedule) FROM users WHERE  user_schedule IS NOT NULL"
+                )->fetchAll()[0][0];
+                echo '<p>' . $count_schedule . ' users have a schedule setup</p>';
+
+                // Finally how many admins do we have
+                $count_admins = $agg->query(
+                    "SELECT COUNT(username) FROM admins;"
+                )->fetchAll()[0][0];
+                echo "<p>Out of <em>$count_users</em> users there are <em>$count_admins</em> admins";
+				?>
+
 				<form method="post">
 				<input type="text" id="search"/>
 				<br>
 					<input id="filter" type="button" value="Set change" class="primary"/>
 				</form>
+				<!-- Some data about our table -->
 				<div class="table-wrapper">
 					<table id = "filteredTeams">
 						<thead>
