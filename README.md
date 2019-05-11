@@ -18,3 +18,4 @@ CST336 Information is below under
 **NOTE:** admin pages can only be accessed through the `/admin` route so the address bar must have: `localhost:<port>/admin` to access the admin login page
 
 ## User-Story
+![logo](./images/userStory.png)
