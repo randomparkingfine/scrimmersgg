@@ -28,8 +28,8 @@ try {
 	print $response->statusCode() . "\n";
 	print_r($response->headers());
 	print $response->body() . "\n";
-	echo 'Thank you for the feed back :^)';
 	*/
+	echo 'Thank you for the feed back :^)';
 }
 catch(Exception $e) {
 	echo 'Caught: ' . $e->getMessage() . "\n";
