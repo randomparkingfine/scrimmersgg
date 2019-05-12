@@ -34,7 +34,7 @@ $mail->setFrom('scrimmers.mail@scrimmers.gg', $name);
 $mail->addContent('text/plain', $body);
 
 // Finally we send our key using the sendgrid api
-$send = new \SendGrid(getenv('SENDGRID_API_KEY'));
+$send = new \SendGrid(getenv('MAIL'));
 try {
 	$response = $send->send($mail);
 	// now some debugging things
